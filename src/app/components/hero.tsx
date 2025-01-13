@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+    <section className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-secondary/10">
+      <div className="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-between">
         <motion.div
-          className="md:w-1/2 text-center md:text-left"
+          className="md:w-1/2 text-center md:text-left mb-8 md:mb-0"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -23,7 +23,7 @@ export function Hero() {
           </Button>
         </motion.div>
         <motion.div
-          className="md:w-1/2 mt-8 md:mt-0"
+          className="md:w-1/2 flex justify-center md:justify-end"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
