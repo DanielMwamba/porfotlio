@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-// import { ModeToggle } from "../components/mode-toogle";
-import { Menu } from "lucide-react";
+// import { ModeToggle } from "@/components/mode-toggle";
+import { Menu, Download } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Accueil" },
@@ -22,7 +22,7 @@ export function Nav() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -41,50 +41,66 @@ export function Nav() {
       transition={{ duration: 0.6 }}
     >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold">
+        <Link
+          href="/"
+          className="text-2xl font-serif font-bold tracking-tight hover:text-primary transition-colors"
+        >
           DM
         </Link>
-        <div className="hidden md:flex space-x-6 items-center">
+        <div className="hidden md:flex space-x-1 items-center">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-foreground/80 hover:text-foreground transition-colors"
+              className="px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-primary/10 rounded-md transition-colors"
             >
               {item.label}
             </Link>
           ))}
-          <Button asChild variant="outline">
-            <a href="/cv.pdf" download>
-              Mon CV
+          <Button asChild variant="outline" size="sm" className="ml-4">
+            <a href="/cv.pdf" download className="flex items-center space-x-2">
+              <Download size={16} />
+              <span>CV</span>
             </a>
           </Button>
           {/* <ModeToggle /> */}
         </div>
         <Sheet>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="outline" size="icon">
+            <Button variant="ghost" size="icon">
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent>
-            <div className="flex flex-col space-y-4 mt-6">
+          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <nav className="flex flex-col space-y-4 mt-6">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-foreground/80 hover:text-foreground transition-colors"
+                  className="text-foreground/80 hover:text-foreground transition-colors px-4 py-2 rounded-md hover:bg-primary/10"
                 >
                   {item.label}
                 </Link>
               ))}
-              <Button asChild variant="outline">
-                <a href="/cv.pdf" download>
-                  Télécharger CV
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="w-full justify-start"
+              >
+                <a
+                  href="/cv.pdf"
+                  download
+                  className="flex items-center space-x-2"
+                >
+                  <Download size={16} />
+                  <span>Télécharger CV</span>
                 </a>
               </Button>
-              {/* <ModeToggle /> */}
-            </div>
+              <div className="px-4">
+                {/* <ModeToggle /> */}
+              </div>
+            </nav>
           </SheetContent>
         </Sheet>
       </div>

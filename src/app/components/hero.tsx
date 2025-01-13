@@ -29,7 +29,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Image
-            src="/profile.jpg"
+            src="/profile.png"
             alt="Daniel Mwamba"
             width={400}
             height={400}
