@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Fira+Code&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 248 249 250;
+  --foreground: 33 37 41;
+  --primary: 0 123 255;
+  --secondary: 108 117 125;
+  --accent: 23 162 184;
+  --muted: 108 117 125;
+  --success: 40 167 69;
+  --error: 220 53 69;
+}
+
+.dark {
+  --background: 33 37 41;
+  --foreground: 248 249 250;
+  --primary: 0 123 255;
+  --secondary: 173 181 189;
+  --accent: 23 162 184;
+  --muted: 173 181 189;
+  --success: 40 167 69;
+  --error: 220 53 69;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
