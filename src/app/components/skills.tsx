@@ -7,8 +7,8 @@ const skills = [
   {
     category: "Développement",
     description:
-      "Expertise en développement web full-stack avec les technologies modernes",
-    items: ["React", "Next.js", "Node.js", "Express", "TypeScript", "GraphQL"],
+      "Conception et création de sites internet, d'applications web et mobiles avec les technologies modernes",
+    items: ["React", "Next.js", "Node.js", "Express", "TypeScript", "REST API"]
   },
   {
     category: "Gestion de projet",

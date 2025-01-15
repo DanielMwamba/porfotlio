@@ -8,17 +8,21 @@ const technologies = [
   "React",
   "Next.js",
   "TypeScript",
+  "JavaScript",
   "Node.js",
   "Express",
   "PostgreSQL",
   "MongoDB",
-  "GraphQL",
   "Tailwind CSS",
+  "WordPress",
+  "Git",
+  "Github",
+  "Figma",
 ];
 
 export function About() {
   return (
-    <section id="about" className="py-16 bg-secondary/10">
+    <section id="about" className="py-16 ">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}

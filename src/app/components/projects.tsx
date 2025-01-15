@@ -15,20 +15,20 @@ import { Badge } from "@/components/ui/badge";
 
 const projects = [
   {
-    title: "KongoDev",
+    title: "DevSphere",
     description:
-      "Plateforme communautaire pour les développeurs congolais, facilitant le partage de connaissances et la collaboration sur des projets innovants.",
-    image: "/kongodev.png",
+      "Plateforme communautaire pour les développeurs, facilitant le partage de connaissances et la collaboration sur des projets innovants.",
+    image: "/devsphere.png",
     technologies: ["React", "Node.js", "Express", "PostgreSQL"],
-    github: "https://github.com/DanielMwamba/KongoDev",
+    github: "https://github.com/DanielMwamba/Devsphere",
     live: "https://kongodev.netlify.app",
   },
   {
-    title: "Twitter Clone",
+    title: "Streameex Studio",
     description:
-      "Réplique des fonctionnalités principales de Twitter, démontrant ma capacité à reproduire des interfaces complexes et des interactions en temps réel.",
-    image: "/twitterclone.png",
-    technologies: ["React", "JavaScript", "HTML", "CSS"],
+      "Plateforme de streaming dédiée à la diffusion d'événements en direct sur plusieurs plateformes comme Facebook, Instagram, Youtube... Permettre aux utilisateurs de diffuser des événements et de les partager sur les plateformes de réseaux sociaux",
+    image: "/streameex.png",
+    technologies: ["NextJS", "Tailwind"],
     github: "https://github.com/DanielMwamba/Twitter-clone",
     live: "https://cloning-twitter.netlify.app/",
   },
@@ -44,7 +44,7 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="py-16 bg-secondary/10">
+    <section id="projects" className="py-16">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}

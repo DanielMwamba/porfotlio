@@ -31,9 +31,9 @@ export function Nav() {
   return (
     <motion.nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-24 right-24 z-50 transition-all duration-300 max-md:left-0 max-md:right-0",
         isScrolled
-          ? "bg-background/80 backdrop-blur-sm shadow-md"
+          ? "bg-slate-900/80 backdrop-blur-sm shadow-md"
           : "bg-transparent"
       )}
       initial={{ y: -100 }}
@@ -52,7 +52,7 @@ export function Nav() {
             <Link
               key={item.href}
               href={item.href}
-              className="px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-primary/10 rounded-md transition-colors"
+              className="px-3 py-2 text-lg font-medium text-foreground/80 hover:text-foreground hover:bg-primary/10 rounded-md transition-colors"
             >
               {item.label}
             </Link>
@@ -68,7 +68,7 @@ export function Nav() {
         <Sheet>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">
-              <Menu className="h-6 w-6" />
+              <Menu className="h-40 w-40" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">
