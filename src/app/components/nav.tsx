@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
-  ]
+  ];
 
   return (
     <header
@@ -85,8 +85,7 @@ const Header = () => {
         )}
       </AnimatePresence>
     </header>
-  )
-}
+  );
+};
 
-export default Header
-
+export default Header;

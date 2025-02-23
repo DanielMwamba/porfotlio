@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { skills } from "@/utils/skills"
 import { useInView } from "react-intersection-observer"
-import { FaReact, FaNodeJs, FaFigma, FaWordpress, FaGit} from "react-icons/fa"
+import { FaReact, FaNodeJs, FaFigma, FaWordpress} from "react-icons/fa"
 import { SiTypescript, SiTailwindcss, SiMongodb, SiPostgresql, SiNextdotjs, SiExpress, SiAsana, SiJavascript, SiGit} from "react-icons/si"
 
 const Skills = () => {
@@ -75,7 +75,7 @@ const Skills = () => {
             Technologies <span className="text-gradient">Récentes</span>
           </h3> */}
           <p className="text-center text-gray-300 mb-8 text-lg">
-            Here are a few technologies and tools I've been working with recently:
+            Here are a few technologies and tools I&apos;ve been working with recently:
           </p>
           <div className="flex flex-wrap justify-center gap-8">
             {recentTechnologies.map((tech, index) => (
