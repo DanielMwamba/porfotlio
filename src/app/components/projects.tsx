@@ -1,115 +1,103 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion"
+import Image from "next/image"
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
+import { useInView } from "react-intersection-observer"
+import { projects } from "@/utils/projects"
 
-const projects = [
-  {
-    title: "DevSphere",
-    description:
-      "Plateforme communautaire pour les développeurs, facilitant le partage de connaissances et la collaboration sur des projets innovants.",
-    image: "/devsphere.png",
-    technologies: ["React", "Node.js", "Express", "PostgreSQL"],
-    github: "https://github.com/DanielMwamba/Devsphere",
-    live: "https://kongodev.netlify.app",
-  },
-  {
-    title: "Streameex Studio",
-    description:
-      "Plateforme de streaming dédiée à la diffusion d'événements en direct sur plusieurs plateformes comme Facebook, Instagram, Youtube... Permettre aux utilisateurs de diffuser des événements et de les partager sur les plateformes de réseaux sociaux",
-    image: "/streameex.png",
-    technologies: ["NextJS", "Tailwind"],
-    github: "https://github.com/DanielMwamba/Twitter-clone",
-    live: "https://cloning-twitter.netlify.app/",
-  },
-  {
-    title: "Catfish Land",
-    description:
-      "Site web moderne pour le restaurant Catfish Land, intégrant un système de réservation en ligne et une interface utilisateur intuitive.",
-    image: "/catfish.png",
-    technologies: ["WordPress", "Elementor", "PHP"],
-    live: "https://dev-catfish-land.pantheonsite.io/",
-  },
-];
+const Projects = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
 
-export function Projects() {
   return (
-    <section id="projects" className="py-16">
+    <section id="projects" className="py-24 bg-gradient-to-b from-black to-gray-900" ref={ref}>
       <div className="container mx-auto px-4">
         <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl font-bold mb-8 text-center"
+          className="text-6xl font-bold mb-16 text-center font-poppins"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
         >
-          Projets
+          Featured <span className="text-stroke">projects done</span>
         </motion.h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-black rounded-lg overflow-hidden shadow-lg hover-lift"
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
             >
-              <Card className="h-full flex flex-col">
-                <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={400}
-                    height={200}
-                    className="rounded-md mb-4 w-full h-48 object-cover"
-                  />
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <Badge key={tech} variant="secondary">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-                <CardFooter className="flex justify-between">
-                  {project.github && (
-                    <Button asChild variant="outline">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        GitHub
-                      </a>
-                    </Button>
-                  )}
-                  <Button asChild>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Voir le projet
-                    </a>
-                  </Button>
-                </CardFooter>
-              </Card>
+              <div className="relative h-48">
+                <Image
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="transition-transform duration-300 transform hover:scale-105"
+                />
+              </div>
+              <div className="p-6 space-y-4">
+                <h3 className="text-2xl font-semibold text-white font-poppins">{project.title}</h3>
+                <p className="text-gray-400 text-sm font-inter">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="bg-gray-800 text-white px-2 py-1 rounded-full text-xs font-inter">
+                      {tech}
+                    </span>
+                  ))}
+                </div> {!project.github? (
+                  <div className="flex justify-between items-center mt-4">
+                  
+                  <motion.a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-gray-300 transition-colors duration-300"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <FaExternalLinkAlt size={24} />
+                  </motion.a>
+                </div>
+                ) : (
+                  <div className="flex justify-between items-center mt-4">
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-gray-300 transition-colors duration-300"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <FaGithub size={24} />
+                  </motion.a>
+                  <motion.a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-gray-300 transition-colors duration-300"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <FaExternalLinkAlt size={24} />
+                  </motion.a>
+                </div>
+                )}
+                
+                
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }
+
+export default Projects
+

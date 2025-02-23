@@ -1,109 +1,92 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-// import { ModeToggle } from "@/components/mode-toggle";
-import { Menu, Download } from "lucide-react";
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { Menu, X } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
-const navItems = [
-  { href: "/", label: "Accueil" },
-  { href: "#about", label: "À propos" },
-  { href: "#skills", label: "Compétences" },
-  { href: "#projects", label: "Projets" },
-  { href: "#contact", label: "Contact" },
-];
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
-export function Nav() {
-  const [isScrolled, setIsScrolled] = React.useState(false);
-
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const navItems = [
+    { href: "#about", label: "About" },
+    { href: "#skills", label: "Skills" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
+  ]
 
   return (
-    <motion.nav
-      className={cn(
-        "fixed top-0 left-24 right-24 z-50 transition-all duration-300 max-md:left-0 max-md:right-0",
-        isScrolled
-          ? "bg-slate-900/80 backdrop-blur-sm shadow-md"
-          : "bg-transparent"
-      )}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
+    <header
+      className={`fixed w-full z-50 transition-all duration-500 ${
+        isScrolled ? "bg-black/80 backdrop-blur-md shadow-lg" : "bg-transparent"
+      }`}
     >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link
-          href="/"
-          className="text-2xl font-serif font-bold tracking-tight hover:text-primary transition-colors"
-        >
-          DM
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <Link href="/" className="text-3xl font-bold text-white font-playfair">
+          <span className="text-stroke">D</span>M
         </Link>
-        <div className="hidden md:flex space-x-1 items-center">
+        <nav className="hidden md:flex space-x-8 lg:space-x-12">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="px-3 py-2 text-lg font-medium text-foreground/80 hover:text-foreground hover:bg-primary/10 rounded-md transition-colors"
+              className="text-white hover:text-gray-300 transition-colors duration-300 text-lg tracking-wide font-bold"
             >
               {item.label}
             </Link>
           ))}
-          <Button asChild variant="outline" size="sm" className="ml-4">
-            <a href="/cv.pdf" download className="flex items-center space-x-2">
-              <Download size={16} />
-              <span>CV</span>
-            </a>
-          </Button>
-          {/* <ModeToggle /> */}
-        </div>
-        <Sheet>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-40 w-40" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-            <nav className="flex flex-col space-y-4 mt-6">
+        </nav>
+        <button
+          className="md:hidden text-white focus:outline-none"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.nav
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-black fixed inset-0 z-50 flex flex-col items-center justify-center"
+          >
+            <button
+              className="absolute top-4 right-4 text-white focus:outline-none font-bold"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
+            >
+              <X size={28} />
+            </button>
+            <div className="flex flex-col space-y-8 items-center">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-foreground/80 hover:text-foreground transition-colors px-4 py-2 rounded-md hover:bg-primary/10"
+                  className="text-white hover:text-gray-300 transition-colors duration-300 text-2xl font-playfair font-bold"
+                  onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="w-full justify-start"
-              >
-                <a
-                  href="/cv.pdf"
-                  download
-                  className="flex items-center space-x-2"
-                >
-                  <Download size={16} />
-                  <span>Télécharger CV</span>
-                </a>
-              </Button>
-              <div className="px-4">
-                {/* <ModeToggle /> */}
-              </div>
-            </nav>
-          </SheetContent>
-        </Sheet>
-      </div>
-    </motion.nav>
-  );
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
+  )
 }
+
+export default Header
+
