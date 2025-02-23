@@ -44,21 +44,17 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        primary: "#ffffff",
-        secondary: "#cccccc",
-        accent: "#3b82f6",
-        fontFamily: {
-          playfair: ["Playfair Display", "serif"],
-          roboto: ["Roboto", "sans-serif"],
-        },
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        playfair: ["Playfair Display", "serif"],
+        roboto: ["Roboto", "sans-serif"],
       },
     },
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
