@@ -1,29 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
-import { SiX } from "react-icons/si";
+import { FaEnvelope } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
+import { reseaux } from "@/utils/reseaux";
 
 const Contact = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const socialLinks = [
-    {
-      icon: FaLinkedin,
-      href: "https://www.linkedin.com/in/yourusername",
-      label: "LinkedIn",
-    },
-    {
-      icon: FaGithub,
-      href: "https://github.com/yourusername",
-      label: "GitHub",
-    },
-    { icon: SiX, href: "https://twitter.com/yourusername", label: "Twitter" },
-  ];
 
   return (
     <section
@@ -66,7 +52,7 @@ const Contact = () => {
           </a>
           <p className="text-gray-400 ">or connect with me on:</p>
           <div className="flex space-x-6">
-            {socialLinks.map((link) => (
+            {reseaux.map((link) => (
               <motion.a
                 key={link.label}
                 href={link.href}
