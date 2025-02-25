@@ -3,12 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaDownload, FaArrowRight } from "react-icons/fa";
-import { SiX } from "react-icons/si";
-
+import { reseaux } from "@/utils/reseaux";
+import { FaArrowRight, FaDownload } from "react-icons/fa";
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+    <section className="min-h-screen mb-16 flex items-center justify-center bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center"></div>
       </div>
@@ -16,7 +15,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="container mx-auto px-6 sm:px-20 py-12 flex flex-col lg:flex-row items-center justify-between relative z-10"
+        className="container mx-auto mt-10 px-6 sm:px-20 py-12 flex flex-col lg:flex-row items-center justify-between relative z-10"
       >
         <div className="lg:w-2/3 text-center lg:text-left mb-12 lg:mb-0 max-w-3xl">
           <motion.h1
@@ -41,8 +40,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Crafting elegant and efficient web solutions with creativity and
-            technical expertise.
+            I am a developer passionate about technology and creating innovative
+            digital solutions to meet society&apos;s needs. I love tackling
+            challenges and solving problems with ingenuity..
           </motion.p>
           <motion.div
             className="flex justify-center lg:justify-start space-x-8 mb-10"
@@ -50,14 +50,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            {[
-              { icon: FaGithub, href: "https://github.com/DanielMwamba" },
-              {
-                icon: FaLinkedin,
-                href: "https://www.linkedin.com/in/daniel-mwamba-802862286",
-              },
-              { icon: SiX, href: "https://www.instagram.com/danielmwamba/" },
-            ].map((social, index) => (
+            {reseaux.map((social, index) => (
               <motion.a
                 key={index}
                 href={social.href}
