@@ -50,7 +50,7 @@ const Contact = () => {
             <FaEnvelope className="mr-2" size={20} />
             Get in Touch
           </a>
-          <p className="text-gray-400 ">or connect with me on:</p>
+          <p className="text-gray-400 ">or follow me on:</p>
           <div className="flex space-x-6">
             {reseaux.map((link) => (
               <motion.a
