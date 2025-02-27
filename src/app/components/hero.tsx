@@ -109,8 +109,10 @@ const Hero = () => {
               <Image
                 src="/profile.png"
                 alt="Daniel MWAMBA"
-                layout="fill"
                 objectFit="cover"
+                quality={80}
+                width={500}
+                height={500}
                 priority
               />
             </motion.div>
