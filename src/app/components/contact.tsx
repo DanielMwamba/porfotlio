@@ -44,13 +44,13 @@ const Contact = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <a
-            href="mailto:your.email@example.com"
+            href="mailto:danielmwambacinyamu@gmail.com"
             className="bg-white text-black hover:bg-gray-200 font-bold py-4 px-8 rounded-full inline-flex items-center justify-center text-lg transition-colors duration-300 font-poppins"
           >
             <FaEnvelope className="mr-2" size={20} />
             Get in Touch
           </a>
-          <p className="text-gray-400 ">or follow me on:</p>
+          <p className="text-gray-400">or follow me on:</p>
           <div className="flex space-x-6">
             {reseaux.map((link) => (
               <motion.a
@@ -58,7 +58,7 @@ const Contact = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors  duration-300"
+                className="text-white hover:text-gray-300 transition-colors duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >

@@ -55,7 +55,7 @@ const About = () => {
     >
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-6xl font-bold mb-16 text-center"
+          className="text-6xl font-bold mb-16 text-center font-poppins"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
@@ -97,13 +97,13 @@ const About = () => {
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                className="bg-black rounded-xl p-6 shadow-lg border border-gray-800 flex flex-col items-center text-center hover:bg-gray-900 transition-colors duration-300 hover-lift"
+                className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 flex flex-col items-center text-center hover:bg-gray-700 transition-colors duration-300 transform hover:scale-105"
                 variants={itemVariants}
               >
                 <div className="bg-white rounded-full p-4 mb-4">
                   <skill.icon size={32} className="text-black" />
                 </div>
-                <h3 className="text-2xl font-semibold mb-3 text-white">
+                <h3 className="text-2xl font-semibold mb-3 text-white font-poppins">
                   {skill.title}
                 </h3>
                 <p className="text-gray-400">{skill.description}</p>

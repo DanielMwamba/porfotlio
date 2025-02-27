@@ -31,7 +31,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              className="bg-black rounded-lg overflow-hidden shadow-lg hover-lift"
+              className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105"
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -42,7 +42,7 @@ const Projects = () => {
                   alt={project.title}
                   layout="fill"
                   objectFit="cover"
-                  className="transition-transform duration-300 transform hover:scale-105"
+                  className="transition-transform duration-300 transform hover:scale-110"
                 />
               </div>
               <div className="p-6 space-y-4">
@@ -56,27 +56,14 @@ const Projects = () => {
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="bg-gray-800 text-white px-2 py-1 rounded-full text-xs font-inter"
+                      className="bg-gray-700 text-white px-2 py-1 rounded-full text-xs font-inter"
                     >
                       {tech}
                     </span>
                   ))}
-                </div>{" "}
-                {!project.github ? (
-                  <div className="flex justify-between items-center mt-4">
-                    <motion.a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white hover:text-gray-300 transition-colors duration-300"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <FaExternalLinkAlt size={24} />
-                    </motion.a>
-                  </div>
-                ) : (
-                  <div className="flex justify-between items-center mt-4">
+                </div>
+                <div className="flex justify-between items-center mt-4">
+                  {project.github && (
                     <motion.a
                       href={project.github}
                       target="_blank"
@@ -87,6 +74,8 @@ const Projects = () => {
                     >
                       <FaGithub size={24} />
                     </motion.a>
+                  )}
+                  {project.live && (
                     <motion.a
                       href={project.live}
                       target="_blank"
@@ -97,8 +86,8 @@ const Projects = () => {
                     >
                       <FaExternalLinkAlt size={24} />
                     </motion.a>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </motion.div>
           ))}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { reseaux } from "@/utils/reseaux";
 import { FaArrowRight, FaDownload } from "react-icons/fa";
+
 const Hero = () => {
   return (
     <section className="min-h-screen mb-16 flex items-center justify-center bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
@@ -42,7 +43,7 @@ const Hero = () => {
           >
             I am a developer passionate about technology and creating innovative
             digital solutions to meet society&apos;s needs. I love tackling
-            challenges and solving problems with ingenuity..
+            challenges and solving problems with ingenuity.
           </motion.p>
           <motion.div
             className="flex justify-center lg:justify-start space-x-8 mb-10"
