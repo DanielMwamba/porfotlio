@@ -70,22 +70,21 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <p className="text-xl mb-6 text-gray-300 leading-relaxed">
-              As a passionate Full Stack Developer, my journey began in the
+              I am a passionate developer. I began my academic career in the
               world of chemistry and biology. This background instilled in me a
-              sense of rigor and logic that I now apply to the realm of coding.
-              My fascination with programming was sparked when I discovered the
-              power of digital tools during my studies. The ability to create
+              sense of rigor and logic that I now apply to coding. My
+              fascination with programming was born from discovering the power
+              of digital tools during my studies. The ability to create
               solutions from scratch using lines of code captivated me, leading
-              me to dive headfirst into web development.
+              me to dive headfirst into web development. My transition to IT
+              management studies allowed me to remain immersed in the world of
+              programming. Later, at Kadea Academy, I honed my skills in web and
+              mobile development, deepening my expertise and fueling my passion
+              for creating innovative digital solutions. Today, I bring a unique
+              blend of scientific thinking and creative problem-solving to each
+              of my projects.
             </p>
-            <p className="text-xl text-gray-300 leading-relaxed">
-              My transition to IT management studies allowed me to stay immersed
-              in the world of programming. Later, at Kadea Academy, I honed my
-              skills in web and mobile development, deepening my expertise and
-              fueling my passion for creating innovative digital solutions.
-              Today, I bring a unique blend of scientific thinking and creative
-              problem-solving to every project I undertake.
-            </p>
+            <p className="text-xl text-gray-300 leading-relaxed"></p>
           </motion.div>
 
           <motion.div
