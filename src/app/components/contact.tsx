@@ -83,7 +83,7 @@ const Contact = () => {
             project, don&apos;t hesitate to reach out!
           </p>
           <a
-            href="/daniel-mwamba-cv.pdf"
+            href="/CV-DANIEL-MWAMBA.pdf"
             download
             className="text-blue-400 hover:text-blue-300 underline font-inter"
           >

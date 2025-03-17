@@ -82,7 +82,7 @@ const Hero = () => {
               />
             </Link>
             <a
-              href="/daniel-mwamba-cv.pdf"
+              href="/CV-DANIEL-MWAMBA.pdf"
               download
               className="border-2 border-white text-white hover:bg-white hover:text-black font-bold py-4 px-8 rounded-full inline-flex items-center justify-center transition-colors text-lg group"
             >
