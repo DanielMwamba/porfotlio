@@ -1,26 +1,33 @@
-import type React from "react"
-import "./globals.css"
-import { Reenie_Beanie, Source_Code_Pro } from "next/font/google"
-import type { Metadata } from "next"
-import Script from "next/script"
+import type React from "react";
+import "./globals.css";
+import { Reenie_Beanie, Source_Code_Pro } from "next/font/google";
+import type { Metadata } from "next";
+import Script from "next/script";
 
 const reenieBeanie = Reenie_Beanie({
   weight: ["400"],
   subsets: ["latin"],
   variable: "--font-reenie-beanie",
-})
+});
 
 const sourceCodePro = Source_Code_Pro({
   weight: ["400", "600", "700"],
   subsets: ["latin"],
   variable: "--font-source-code-pro",
-})
+});
 
 export const metadata: Metadata = {
   title: "Daniel MWAMBA | Full Stack Developer",
   description:
     "Portfolio of Daniel Mwamba, a passionate Full Stack Developer specializing in React, Node.js, and modern web technologies.",
-  keywords: ["Full Stack Developer", "React", "Node.js", "JavaScript", "TypeScript", "Web Development"],
+  keywords: [
+    "Full Stack Developer",
+    "React",
+    "Node.js",
+    "JavaScript",
+    "TypeScript",
+    "Web Development",
+  ],
   authors: [{ name: "Daniel MWAMBA" }],
   creator: "Daniel MWAMBA",
   publisher: "Daniel MWAMBA",
@@ -31,7 +38,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Daniel MWAMBA | Full Stack Developer",
-    description: "Portfolio of Daniel Mwamba, a passionate Full Stack Developer",
+    description:
+      "Portfolio of Daniel Mwamba, a passionate Full Stack Developer",
     url: "https://danielmwamba.vercel.app/profile.png",
     siteName: "Daniel MWAMBA Portfolio",
     images: [
@@ -48,7 +56,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Daniel MWAMBA | Full Stack Developer",
-    description: "Portfolio of Daniel Mwamba, a passionate Full Stack Developer",
+    description:
+      "Portfolio of Daniel Mwamba, a passionate Full Stack Developer",
     creator: "@danielmwamba",
     images: ["https://danielmwamba.vercel.app/profile.png"],
   },
@@ -68,19 +77,28 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
-  manifest: "/site.webmanifest",
+  // The manifest is now handled by the manifest.ts file
   alternates: {
     canonical: "https://danielmwamba.vercel.app",
   },
-}
+  appleWebApp: {
+    title: "Daniel MWAMBA",
+    statusBarStyle: "black-translucent",
+    capable: true,
+  },
+  themeColor: "#000000",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${reenieBeanie.variable} ${sourceCodePro.variable}`}>
+    <html
+      lang="en"
+      className={`scroll-smooth ${reenieBeanie.variable} ${sourceCodePro.variable}`}
+    >
       <head>
         <Script
           id="schema-org"
@@ -106,13 +124,37 @@ export default function RootLayout({
                 "@type": "EducationalOrganization",
                 name: "Kadea Academy",
               },
-              knowsAbout: ["React", "Node.js", "JavaScript", "TypeScript", "Web Development"],
+              knowsAbout: [
+                "React",
+                "Node.js",
+                "JavaScript",
+                "TypeScript",
+                "Web Development",
+              ],
             }),
           }}
         />
+        <link rel="apple-touch-icon" href="/profile.png" />
       </head>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        <Script id="register-sw" strategy="afterInteractive">
+          {`
+            if ('serviceWorker' in navigator) {
+              window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(
+                  function(registration) {
+                    console.log('Service Worker registration successful with scope: ', registration.scope);
+                  },
+                  function(err) {
+                    console.log('Service Worker registration failed: ', err);
+                  }
+                );
+              });
+            }
+          `}
+        </Script>
+      </body>
     </html>
-  )
+  );
 }
-
