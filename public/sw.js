@@ -10,6 +10,10 @@ self.addEventListener('install', (event) => {
           '/manifest.json',
           '/profile.png',
           '/CV-DANIEL-MWAMBA.pdf',
+          '/devsphere.png',
+          '/duplex.png',
+          '/streameex.png',
+          '/catfish.png'
         ]);
       } catch (err) {
         return console.error(err);
