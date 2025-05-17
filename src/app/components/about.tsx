@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { FaUsers, FaBrain, FaRocket } from "react-icons/fa";
+import { useI18n } from "@/locales/client";
 
 const About = () => {
+  const t = useI18n();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -13,19 +15,18 @@ const About = () => {
   const skills = [
     {
       icon: FaBrain,
-      title: "Problem Solving",
-      description:
-        "Transforming complex challenges into elegant, efficient solutions",
+      title: t("about.skill1.title"),
+      description: t("about.skill1.description"),
     },
     {
       icon: FaUsers,
-      title: "Collaboration",
-      description: "Thriving in team environments to achieve shared goals",
+      title: t("about.skill2.title"),
+      description: t("about.skill2.description"),
     },
     {
       icon: FaRocket,
-      title: "Adaptability",
-      description: "Quickly adapting to new technologies and methodologies",
+      title: t("about.skill3.title"),
+      description: t("about.skill3.description"),
     },
   ];
 
@@ -73,7 +74,7 @@ const About = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            À propos <span className="text-gradient">de moi</span>
+            {t("about.title")}
           </motion.h2>
           <motion.div
             className="h-1 w-20 sm:w-24 md:w-32 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-3 sm:mt-4 mb-4 sm:mb-6"
@@ -98,10 +99,7 @@ const About = () => {
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                À l&apos;origine, je rêvais de devenir médecin - j&apos;ai même
-                commencé des études en chimie-bio pour y arriver. Mais un jour,
-                par curiosité, je suis tombé sur une question : &quot;Comment
-                a-t-on créé Google ?&quot;.
+                {t("about.paragraph1")}
               </motion.p>
 
               <motion.p
@@ -110,12 +108,7 @@ const About = () => {
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Cette simple interrogation a tout changé. En creusant, j&apos;ai
-                découvert l&apos;envers du décor : le code, les sites web,
-                l&apos;HTML... et une passion est née. Plus j&apos;apprenais,
-                plus je voulais comprendre. Aujourd&apos;hui, c&apos;est clair :
-                mon truc, c&apos;est construire des choses avec des lignes de
-                code.
+                {t("about.paragraph2")}
               </motion.p>
 
               <motion.p
@@ -124,11 +117,7 @@ const About = () => {
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                Ce qui me reste de mon passé scientifique ? Un esprit
-                d&apos;analyse, une curiosité insatiable et cette envie de
-                résoudre des problèmes... mais avec un clavier cette fois.
-                C&apos;est peut-être un détour inattendu, mais le code est
-                devenu ma façon à moi de soigner des projets !
+                {t("about.paragraph3")}
               </motion.p>
             </div>
           </motion.div>

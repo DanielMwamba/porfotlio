@@ -5,8 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { reseaux } from "@/utils/reseaux";
 import { FaArrowRight, FaDownload } from "react-icons/fa";
+import { useI18n } from "@/locales/client";
 
 const Hero = () => {
+  const t = useI18n();
+
   return (
     <section className="section-container min-h-[95vh] flex items-center justify-center relative overflow-hidden">
       {/* Effets d'arrière-plan améliorés */}
@@ -55,7 +58,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Software <span className="text-gradient">Engineer</span>
+              {t("hero.title")}
             </motion.h2>
 
             {/* Description optimisée pour la lisibilité */}
@@ -65,10 +68,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Je suis un développeur passionné par la technologie et la création
-              de solutions digitales innovantes qui répondent aux besoins
-              actuels. J&apos;aime relever des défis et résoudre des problèmes
-              avec ingéniosité.
+              {t("hero.description")}
             </motion.p>
 
             {/* Icônes sociales repositionnées */}
@@ -109,7 +109,7 @@ const Hero = () => {
                 href="#contact"
                 className="glass bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-padding backdrop-filter text-white font-medium py-4 px-8 rounded-full inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 group font-montserrat"
               >
-                Me contacter
+                {t("hero.contactButton")}
                 <motion.div
                   className="ml-2 inline-block"
                   initial={{ x: 0 }}
@@ -124,7 +124,7 @@ const Hero = () => {
                 download
                 className="glass text-white font-medium py-4 px-8 rounded-full inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 border border-white/20 group font-montserrat"
               >
-                Mon CV
+                {t("hero.cvButton")}
                 <motion.div
                   className="ml-2 inline-block"
                   initial={{ y: 0 }}

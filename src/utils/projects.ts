@@ -1,8 +1,9 @@
 export const projects = [
   {
+    id: "devsphere",
     title: "DEVSphere",
     description:
-      "A platform allowing developers to read and share their experience by writing articles on different topics.",
+      "Une plateforme permettant aux développeurs de lire et partager leurs expériences en écrivant des articles sur différents sujets.",
     image: "/devsphere.png",
     technologies: [
       "React",
@@ -16,28 +17,29 @@ export const projects = [
     live: "https://spheredev.vercel.app/",
   },
   {
+    id: "streameex",
     title: "Streameex Studio",
     description:
-      "Streaming platform dedicated to broadcasting live events on several platforms simultaneously such as Facebook, Instagram, Youtube...Allow users to stream events and share them on social media platforms.",
+      "Plateforme de streaming dédiée à la diffusion d'événements en direct sur plusieurs plateformes simultanément comme Facebook, Instagram, Youtube... Permet aux utilisateurs de diffuser des événements et de les partager sur les réseaux sociaux.",
     image: "/streameex.png",
     technologies: ["NextJs", "TailWind"],
     live: "https://studio.streameex.com",
   },
-
   {
+    id: "duplex",
     title: "Duplex",
     description:
-      "A customized version of VDO.Ninja with additional features and UI improvements, designed for seamless real-time video streaming and integration with broadcasting tools like OBS.",
+      "Une version personnalisée de VDO.Ninja avec des fonctionnalités supplémentaires et une interface utilisateur améliorée, conçue pour une diffusion vidéo en temps réel fluide et une intégration avec des outils de diffusion comme OBS.",
     image: "/duplex.png",
-    technologies: ["WebRTC", "JavaScript", "JQuery",],
-    github: "https://github.com/DanielMwamba/duplex-24.4.stable", 
+    technologies: ["WebRTC", "JavaScript", "JQuery"],
+    github: "https://github.com/DanielMwamba/duplex-24.4.stable",
     live: "https://duplex.streameex.com",
   },
-
   {
+    id: "catfish",
     title: "Catfish Land",
     description:
-      "Website for the Catfish Land restaurant... Allow users to contact the restaurant to place their orders and reserve tables",
+      "Site web pour le restaurant Catfish Land... Permet aux utilisateurs de contacter le restaurant pour passer leurs commandes et réserver des tables.",
     image: "/catfish.png",
     technologies: ["Wordpress", "Elementor"],
     live: "https://dev-catfish-land.pantheonsite.io/",

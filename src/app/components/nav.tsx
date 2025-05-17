@@ -5,8 +5,13 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { reseaux } from "@/utils/reseaux";
+import { useI18n, useChangeLocale, useCurrentLocale } from "@/locales/client";
 
 const Header = () => {
+  const t = useI18n();
+  const changeLocale = useChangeLocale();
+  const locale = useCurrentLocale();
+
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -67,10 +72,10 @@ const Header = () => {
   }, [isOpen]);
 
   const navItems = [
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
+    { href: "#about", label: t("nav.about") },
+    { href: "#skills", label: t("nav.skills") },
+    { href: "#projects", label: t("nav.projects") },
+    { href: "#contact", label: t("nav.contact") },
   ];
 
   const menuVariants = {
@@ -142,6 +147,28 @@ const Header = () => {
             </Link>
           ))}
         </nav>
+
+        {/* Sélecteur de langue */}
+        <div className="hidden md:flex mr-8">
+          <button
+            onClick={() => changeLocale("en")}
+            className={`mr-2 ${
+              locale === "en" ? "text-gradient font-bold" : "text-white"
+            }`}
+          >
+            EN
+          </button>
+          <span className="text-white">|</span>
+          <button
+            onClick={() => changeLocale("fr")}
+            className={`ml-2 ${
+              locale === "fr" ? "text-gradient font-bold" : "text-white"
+            }`}
+          >
+            FR
+          </button>
+        </div>
+
         <motion.button
           className="md:hidden glass p-2 rounded-full text-white focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
@@ -221,6 +248,33 @@ const Header = () => {
                     </Link>
                   </motion.div>
                 ))}
+              </motion.div>
+
+              {/* Sélecteur de langue mobile */}
+              <motion.div
+                className="mt-8 flex space-x-4"
+                variants={itemVariants}
+              >
+                <button
+                  onClick={() => changeLocale("en")}
+                  className={`px-4 py-2 glass rounded-full ${
+                    locale === "en"
+                      ? "bg-gradient-to-r from-blue-600/50 to-purple-600/50"
+                      : ""
+                  }`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => changeLocale("fr")}
+                  className={`px-4 py-2 glass rounded-full ${
+                    locale === "fr"
+                      ? "bg-gradient-to-r from-blue-600/50 to-purple-600/50"
+                      : ""
+                  }`}
+                >
+                  FR
+                </button>
               </motion.div>
 
               {/* Réseaux sociaux dans le menu mobile */}

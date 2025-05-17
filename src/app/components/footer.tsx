@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { reseaux } from "@/utils/reseaux";
+import { useI18n } from "@/locales/client";
 
 const Footer = () => {
+  const t = useI18n();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -73,7 +75,7 @@ const Footer = () => {
               className="mb-4 md:mb-0"
             >
               <p>
-                Conçu et développé par{" "}
+                {t("footer.designed")}{" "}
                 <span className="font-semibold text-white">Daniel Mwamba</span>
               </p>
             </motion.div>
@@ -84,7 +86,9 @@ const Footer = () => {
               transition={{ duration: 0.4, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <p>© {currentYear} Tous droits réservés</p>
+              <p>
+                © {currentYear} {t("footer.rights")}
+              </p>
             </motion.div>
           </div>
         </div>

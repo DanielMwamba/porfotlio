@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { FaEnvelope, FaFileDownload } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import { reseaux } from "@/utils/reseaux";
+import { useI18n } from "@/locales/client";
 
 const Contact = () => {
+  const t = useI18n();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -53,7 +55,7 @@ const Contact = () => {
         >
           <h2 className="text-6xl font-bold font-montserrat tracking-tight">
             {" "}
-            Prendre <span className="text-gradient">Contact</span>{" "}
+            {t("contact.title")}{" "}
           </h2>
           <motion.div
             className="h-1 w-32 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto my-6"
@@ -73,11 +75,7 @@ const Contact = () => {
             variants={itemVariants}
             className="text-xl text-gray-300 text-center mb-12 max-w-2xl font-inter leading-relaxed"
           >
-            Je suis ouvert aux nouvelles opportunités, collaborations ou
-            simplement à une discussion amicale sur la technologie et le
-            développement. Que vous ayez un projet en tête ou que vous
-            souhaitiez simplement dire bonjour, je serais ravi de vous entendre
-            !
+            {t("contact.description")}
           </motion.p>
 
           <motion.div
@@ -96,10 +94,12 @@ const Contact = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <FaEnvelope className="mr-3" size={20} />
-                M&apos;envoyer un email
+                {t("contact.emailButton")}
               </motion.a>
 
-              <p className="text-gray-300 mt-4 font-inter">ou me suivre sur:</p>
+              <p className="text-gray-300 mt-4 font-inter">
+                {t("contact.followMe")}
+              </p>
 
               <div className="flex space-x-8 mt-4">
                 {reseaux.map((link) => (
@@ -131,14 +131,11 @@ const Contact = () => {
           <motion.div variants={itemVariants} className="text-center max-w-2xl">
             <h3 className="text-2xl font-semibold mb-6 font-montserrat tracking-tight">
               {" "}
-              Vous cherchez un développeur?{" "}
+              {t("contact.lookingFor")}{" "}
             </h3>
             <p className="text-gray-300 mb-8 font-inter">
               {" "}
-              Je suis actuellement disponible pour du travail freelance et des
-              postes à temps plein. Si vous pensez que je serais un bon choix
-              pour votre équipe ou votre projet, n&apos;hésitez pas à me
-              contacter!{" "}
+              {t("contact.available")}{" "}
             </p>
             <motion.a
               href="/CV-DANIEL-MWAMBA.pdf"
@@ -151,7 +148,7 @@ const Contact = () => {
               whileTap={{ scale: 0.95 }}
             >
               <FaFileDownload className="mr-2" size={18} />
-              Télécharger mon CV
+              {t("contact.downloadCV")}
             </motion.a>
           </motion.div>
         </motion.div>

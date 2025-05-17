@@ -5,8 +5,10 @@ import Image from "next/image";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import { projects } from "@/utils/projects";
+import { useI18n } from "@/locales/client";
 
 const Projects = () => {
+  const t = useI18n();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -47,6 +49,22 @@ const Projects = () => {
     },
   };
 
+  // Fonction pour obtenir la description du projet
+  const getProjectDescription = (projectId: string) => {
+    switch (projectId) {
+      case "devsphere":
+        return t("projects.devsphere.description");
+      case "streameex":
+        return t("projects.streameex.description");
+      case "duplex":
+        return t("projects.duplex.description");
+      case "catfish":
+        return t("projects.catfish.description");
+      default:
+        return "";
+    }
+  };
+
   return (
     <section
       id="projects"
@@ -71,7 +89,7 @@ const Projects = () => {
             className="font-bold font-montserrat text-4xl tracking-tight"
             variants={titleVariants}
           >
-            Mes <span className="text-gradient">Projets</span>
+            {t("projects.title")}
           </motion.h2>
 
           <motion.div
@@ -85,8 +103,7 @@ const Projects = () => {
             className="text-gray-400 max-w-2xl mx-auto text-lg mb-12 font-inter leading-relaxed"
             variants={titleVariants}
           >
-            Découvrez une sélection de mes projets représentatifs qui illustrent
-            mes compétences et mon expérience
+            {t("projects.subtitle")}
           </motion.p>
         </motion.div>
 
@@ -98,7 +115,7 @@ const Projects = () => {
         >
           {projects.map((project) => (
             <motion.div
-              key={project.title}
+              key={project.id}
               className="card overflow-hidden"
               variants={showcaseVariants}
               whileHover={{
@@ -121,7 +138,7 @@ const Projects = () => {
                   {project.title}
                 </h4>
                 <p className="text-gray-400 text-sm font-inter line-clamp-2 mb-3">
-                  {project.description}
+                  {getProjectDescription(project.id)}
                 </p>
                 <div className="flex flex-wrap gap-1 mb-3">
                   {project.technologies.slice(0, 3).map((tech) => (
@@ -150,7 +167,7 @@ const Projects = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       <FaGithub size={14} className="mr-1" />
-                      Code
+                      {t("projects.codeButton")}
                     </motion.a>
                   )}
 
@@ -164,7 +181,7 @@ const Projects = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       <FaExternalLinkAlt size={12} className="mr-1" />
-                      Demo
+                      {t("projects.demoButton")}
                     </motion.a>
                   )}
                 </div>

@@ -15,8 +15,10 @@ import {
   SiJavascript,
   SiGit,
 } from "react-icons/si";
+import { useI18n } from "@/locales/client";
 
 const Skills = () => {
+  const t = useI18n();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -83,6 +85,32 @@ const Skills = () => {
     },
   };
 
+  // Fonction pour obtenir les titres et descriptions des compétences
+  const getSkillContent = (skillId: string) => {
+    switch (skillId) {
+      case "fullstack":
+        return {
+          title: t("skills.fullstack.title"),
+          description: t("skills.fullstack.description"),
+        };
+      case "uiux":
+        return {
+          title: t("skills.uiux.title"),
+          description: t("skills.uiux.description"),
+        };
+      case "management":
+        return {
+          title: t("skills.management.title"),
+          description: t("skills.management.description"),
+        };
+      default:
+        return {
+          title: "",
+          description: "",
+        };
+    }
+  };
+
   return (
     <section
       id="skills"
@@ -104,7 +132,7 @@ const Skills = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            Compétences <span className="text-gradient">clés</span>
+            {t("skills.title")}
           </motion.h2>
           <motion.div
             className="h-1 w-24 md:w-32 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-4 mb-6"
@@ -121,45 +149,48 @@ const Skills = () => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          {skills.map((skill) => (
-            <motion.div
-              key={skill.name}
-              className="card"
-              variants={itemVariants}
-              whileHover={{
-                y: -8,
-                transition: { duration: 0.3 },
-                boxShadow: "0 10px 25px rgba(var(--primary), 0.2)",
-              }}
-            >
-              <div className="card-content flex flex-col h-full">
-                <div className="flex items-start mb-4">
-                  <motion.div
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-full mr-4 text-white shadow-lg flex-shrink-0"
-                    whileHover={{
-                      scale: 1.1,
-                      rotate: 5,
-                      transition: {
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 10,
-                      },
-                    }}
-                  >
-                    <skill.icon className="w-6 h-6" />
-                  </motion.div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold font-montserrat tracking-tight group-hover:text-gradient transition-colors duration-300">
-                      {skill.name}
-                    </h3>
-                    <p className="text-gray-400 mt-2 font-inter group-hover:text-gray-300 transition-colors duration-300">
-                      {skill.description}
-                    </p>
+          {skills.map((skill) => {
+            const content = getSkillContent(skill.id);
+            return (
+              <motion.div
+                key={skill.id}
+                className="card"
+                variants={itemVariants}
+                whileHover={{
+                  y: -8,
+                  transition: { duration: 0.3 },
+                  boxShadow: "0 10px 25px rgba(var(--primary), 0.2)",
+                }}
+              >
+                <div className="card-content flex flex-col h-full">
+                  <div className="flex items-start mb-4">
+                    <motion.div
+                      className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-full mr-4 text-white shadow-lg flex-shrink-0"
+                      whileHover={{
+                        scale: 1.1,
+                        rotate: 5,
+                        transition: {
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 10,
+                        },
+                      }}
+                    >
+                      <skill.icon className="w-6 h-6" />
+                    </motion.div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold font-montserrat tracking-tight group-hover:text-gradient transition-colors duration-300">
+                        {content.title}
+                      </h3>
+                      <p className="text-gray-400 mt-2 font-inter group-hover:text-gray-300 transition-colors duration-300">
+                        {content.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {/* Section technologies */}
@@ -176,8 +207,7 @@ const Skills = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <h3 className="text-2xl font-semibold font-montserrat tracking-tight mb-3">
-              Voici quelques technologies avec lesquelles j&apos;ai travaillé
-              récemment
+              {t("skills.subtitle")}
             </h3>
             <div className="h-1 w-32 bg-gradient-to-r from-purple-500/70 to-blue-500/70 mx-auto mt-2 mb-4"></div>
           </motion.div>

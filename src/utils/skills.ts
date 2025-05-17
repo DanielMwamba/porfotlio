@@ -1,23 +1,18 @@
-import {FaCode, FaProjectDiagram} from "react-icons/fa"
-import { Layout} from "lucide-react";
+import { FaCode, FaProjectDiagram } from "react-icons/fa";
+import { Layout } from "lucide-react";
 
-
-
+// Identifiants pour la traduction
 export const skills = [
   {
-    name: "Full Stack Development",
+    id: "fullstack",
     icon: FaCode,
-    description: "Proficient in both frontend and backend technologies, Design and creation of websites, web and mobile applications",
   },
   {
-    name: "UI/UX Design",
+    id: "uiux",
     icon: Layout,
-    description: "Creating intuitive and visually appealing user interfaces",
   },
-
   {
-    name: "Project management",
+    id: "management",
     icon: FaProjectDiagram,
-    description: "Agile project management using the Scrum method",
   },
 ];
