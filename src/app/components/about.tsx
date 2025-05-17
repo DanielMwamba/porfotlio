@@ -68,7 +68,7 @@ const About = () => {
       <div className="content-container relative z-10">
         <div className="section-title-container">
           <motion.h2
-            className="font-bold font-montserrat text-4xl tracking-tight"
+            className="font-bold font-montserrat text-3xl sm:text-4xl tracking-tight"
             initial={{ opacity: 0, y: -20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
@@ -76,60 +76,65 @@ const About = () => {
             À propos <span className="text-gradient">de moi</span>
           </motion.h2>
           <motion.div
-            className="h-1 w-24 md:w-32 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-4 mb-6"
+            className="h-1 w-20 sm:w-24 md:w-32 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-3 sm:mt-4 mb-4 sm:mb-6"
             initial={{ scaleX: 0 }}
             animate={inView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.div
-            className="glass rounded-2xl p-6 md:p-8 shadow-xl border border-white/10 backdrop-blur mb-16"
+            className="glass rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-xl border border-white/10 backdrop-blur mb-10 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             whileHover={{ boxShadow: "0 0 30px rgba(139, 92, 246, 0.15)" }}
           >
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <motion.p
-                className="text-lg text-gray-300 leading-relaxed font-inter"
+                className="text-base sm:text-lg text-gray-300 leading-relaxed font-inter"
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Je suis un développeur passionné. J&apos;ai commencé ma carrière
-                académique dans le monde de la chimie et de la biologie. Cette
-                formation m&apos;a inculqué un sens de la rigueur et de la
-                logique que j&apos;applique maintenant au codage.
+                À l&apos;origine, je rêvais de devenir médecin - j&apos;ai même
+                commencé des études en chimie-bio pour y arriver. Mais un jour,
+                par curiosité, je suis tombé sur une question : &quot;Comment
+                a-t-on créé Google ?&quot;.
               </motion.p>
+
               <motion.p
-                className="text-lg text-gray-300 leading-relaxed font-inter"
+                className="text-base sm:text-lg text-gray-300 leading-relaxed font-inter"
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Ma fascination pour la programmation est née de la découverte de
-                la puissance des outils numériques pendant mes études. La
-                capacité à créer des solutions à partir de rien en utilisant des
-                lignes de code m&apos;a captivé, m&apos;amenant à plonger tête
-                première dans le développement web.
+                Cette simple interrogation a tout changé. En creusant, j&apos;ai
+                découvert l&apos;envers du décor : le code, les sites web,
+                l&apos;HTML... et une passion est née. Plus j&apos;apprenais,
+                plus je voulais comprendre. Aujourd&apos;hui, c&apos;est clair :
+                mon truc, c&apos;est construire des choses avec des lignes de
+                code.
               </motion.p>
+
               <motion.p
-                className="text-lg text-gray-300 leading-relaxed font-inter"
+                className="text-base sm:text-lg text-gray-300 leading-relaxed font-inter"
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                Aujourd&apos;hui, j&apos;apporte un mélange unique de pensée
-                scientifique et de résolution créative de problèmes à chacun de
-                mes projets.
+                Ce qui me reste de mon passé scientifique ? Un esprit
+                d&apos;analyse, une curiosité insatiable et cette envie de
+                résoudre des problèmes... mais avec un clavier cette fois.
+                C&apos;est peut-être un détour inattendu, mais le code est
+                devenu ma façon à moi de soigner des projets !
               </motion.p>
             </div>
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -137,7 +142,7 @@ const About = () => {
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                className="card p-6 text-center group"
+                className="card p-4 sm:p-6 text-center group"
                 variants={itemVariants}
                 whileHover={{
                   y: -8,
@@ -146,19 +151,19 @@ const About = () => {
                 }}
               >
                 <motion.div
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-full p-5 w-20 h-20 flex items-center justify-center mx-auto mb-6 text-white shadow-lg"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-full p-4 sm:p-5 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mx-auto mb-4 sm:mb-6 text-white shadow-lg"
                   whileHover={{
                     scale: 1.1,
                     rotate: 5,
                     transition: { type: "spring", stiffness: 300, damping: 10 },
                   }}
                 >
-                  <skill.icon size={28} />
+                  <skill.icon size={24} className="sm:text-[28px]" />
                 </motion.div>
-                <h3 className="text-2xl font-semibold mb-3 text-white font-montserrat tracking-tight group-hover:text-gradient transition-colors duration-300">
+                <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3 text-white font-montserrat tracking-tight group-hover:text-gradient transition-colors duration-300">
                   {skill.title}
                 </h3>
-                <p className="text-gray-400 font-inter group-hover:text-gray-300 transition-colors duration-300">
+                <p className="text-sm sm:text-base text-gray-400 font-inter group-hover:text-gray-300 transition-colors duration-300">
                   {skill.description}
                 </p>
               </motion.div>
