@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { FaCode, FaUsers, FaGlobe } from "react-icons/fa";
+import { FaUsers, FaBrain, FaRocket } from "react-icons/fa";
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -12,7 +12,7 @@ const About = () => {
 
   const skills = [
     {
-      icon: FaCode,
+      icon: FaBrain,
       title: "Problem Solving",
       description:
         "Transforming complex challenges into elegant, efficient solutions",
@@ -23,7 +23,7 @@ const About = () => {
       description: "Thriving in team environments to achieve shared goals",
     },
     {
-      icon: FaGlobe,
+      icon: FaRocket,
       title: "Adaptability",
       description: "Quickly adapting to new technologies and methodologies",
     },
@@ -34,61 +34,102 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+      },
     },
   };
 
   return (
     <section
       id="about"
-      className="py-24 bg-gradient-to-b from-black to-gray-900"
+      className="section-container relative overflow-hidden"
       ref={ref}
     >
-      <div className="container mx-auto px-4">
-        <motion.h2
-          className="text-6xl font-bold mb-16 text-center font-poppins"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          About <span className="text-stroke">Me</span>
-        </motion.h2>
+      {/* Arrière-plan décoratif */}
+      <div className="absolute -right-64 top-1/3 w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-blue-500/10 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
+      <div
+        className="absolute -left-64 bottom-1/3 w-[35vw] h-[35vw] max-w-[450px] max-h-[450px] bg-purple-500/10 rounded-full filter blur-3xl opacity-30 animate-pulse"
+        style={{ animationDelay: "2s" }}
+      ></div>
+
+      <div className="content-container relative z-10">
+        <div className="section-title-container">
+          <motion.h2
+            className="font-bold font-montserrat text-4xl tracking-tight"
+            initial={{ opacity: 0, y: -20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            À propos <span className="text-gradient">de moi</span>
+          </motion.h2>
+          <motion.div
+            className="h-1 w-24 md:w-32 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-4 mb-6"
+            initial={{ scaleX: 0 }}
+            animate={inView ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          />
+        </div>
+
         <div className="max-w-4xl mx-auto">
           <motion.div
-            className="bg-black rounded-2xl p-8 shadow-2xl border border-gray-800"
+            className="glass rounded-2xl p-6 md:p-8 shadow-xl border border-white/10 backdrop-blur mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
+            whileHover={{ boxShadow: "0 0 30px rgba(139, 92, 246, 0.15)" }}
           >
-            <p className="text-xl mb-6 text-gray-300 leading-relaxed">
-              I am a passionate developer. I began my academic career in the
-              world of chemistry and biology. This background instilled in me a
-              sense of rigor and logic that I now apply to coding. My
-              fascination with programming was born from discovering the power
-              of digital tools during my studies. The ability to create
-              solutions from scratch using lines of code captivated me, leading
-              me to dive headfirst into web development. My transition to IT
-              management studies allowed me to remain immersed in the world of
-              programming. Later, at Kadea Academy, I honed my skills in web and
-              mobile development, deepening my expertise and fueling my passion
-              for creating innovative digital solutions. Today, I bring a unique
-              blend of scientific thinking and creative problem-solving to each
-              of my projects.
-            </p>
-            <p className="text-xl text-gray-300 leading-relaxed"></p>
+            <div className="space-y-6">
+              <motion.p
+                className="text-lg text-gray-300 leading-relaxed font-inter"
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Je suis un développeur passionné. J&apos;ai commencé ma carrière
+                académique dans le monde de la chimie et de la biologie. Cette
+                formation m&apos;a inculqué un sens de la rigueur et de la
+                logique que j&apos;applique maintenant au codage.
+              </motion.p>
+              <motion.p
+                className="text-lg text-gray-300 leading-relaxed font-inter"
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                Ma fascination pour la programmation est née de la découverte de
+                la puissance des outils numériques pendant mes études. La
+                capacité à créer des solutions à partir de rien en utilisant des
+                lignes de code m&apos;a captivé, m&apos;amenant à plonger tête
+                première dans le développement web.
+              </motion.p>
+              <motion.p
+                className="text-lg text-gray-300 leading-relaxed font-inter"
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                Aujourd&apos;hui, j&apos;apporte un mélange unique de pensée
+                scientifique et de résolution créative de problèmes à chacun de
+                mes projets.
+              </motion.p>
+            </div>
           </motion.div>
 
           <motion.div
-            className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -96,16 +137,30 @@ const About = () => {
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 flex flex-col items-center text-center hover:bg-gray-700 transition-colors duration-300 transform hover:scale-105"
+                className="card p-6 text-center group"
                 variants={itemVariants}
+                whileHover={{
+                  y: -8,
+                  transition: { duration: 0.3 },
+                  boxShadow: "0 10px 25px rgba(var(--primary), 0.2)",
+                }}
               >
-                <div className="bg-white rounded-full p-4 mb-4">
-                  <skill.icon size={32} className="text-black" />
-                </div>
-                <h3 className="text-2xl font-semibold mb-3 text-white font-poppins">
+                <motion.div
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-full p-5 w-20 h-20 flex items-center justify-center mx-auto mb-6 text-white shadow-lg"
+                  whileHover={{
+                    scale: 1.1,
+                    rotate: 5,
+                    transition: { type: "spring", stiffness: 300, damping: 10 },
+                  }}
+                >
+                  <skill.icon size={28} />
+                </motion.div>
+                <h3 className="text-2xl font-semibold mb-3 text-white font-montserrat tracking-tight group-hover:text-gradient transition-colors duration-300">
                   {skill.title}
                 </h3>
-                <p className="text-gray-400">{skill.description}</p>
+                <p className="text-gray-400 font-inter group-hover:text-gray-300 transition-colors duration-300">
+                  {skill.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>

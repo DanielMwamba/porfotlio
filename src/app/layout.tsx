@@ -1,6 +1,11 @@
 import type React from "react";
 import "./globals.css";
-import { Reenie_Beanie, Source_Code_Pro } from "next/font/google";
+import {
+  Reenie_Beanie,
+  Source_Code_Pro,
+  Montserrat,
+  Inter,
+} from "next/font/google";
 import type { Metadata } from "next";
 import Script from "next/script";
 
@@ -14,6 +19,20 @@ const sourceCodePro = Source_Code_Pro({
   weight: ["400", "600", "700"],
   subsets: ["latin"],
   variable: "--font-source-code-pro",
+});
+
+const montserrat = Montserrat({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+const inter = Inter({
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -106,7 +125,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`scroll-smooth ${reenieBeanie.variable} ${sourceCodePro.variable}`}
+      className={`scroll-smooth ${reenieBeanie.variable} ${sourceCodePro.variable} ${montserrat.variable} ${inter.variable}`}
     >
       <head>
         <Script
