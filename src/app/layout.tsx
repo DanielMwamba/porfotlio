@@ -22,6 +22,15 @@ export const metadata: Metadata = {
     "Portfolio of Daniel Mwamba, a passionate Full Stack Developer specializing in React, Node.js, and modern web technologies.",
   keywords: [
     "Full Stack Developer",
+    "Software Engineer",
+    "Web Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "Daniel Mwamba",
+    "Daniel Mwamba Portfolio",
+    "Daniel Mwamba Full Stack Developer",
+    "Dan Mwamba",
+    "Dan Muamba",
     "React",
     "Node.js",
     "JavaScript",
@@ -40,11 +49,11 @@ export const metadata: Metadata = {
     title: "Daniel MWAMBA | Full Stack Developer",
     description:
       "Portfolio of Daniel Mwamba, a passionate Full Stack Developer",
-    url: "https://danielmwamba.vercel.app/profile.png",
+    url: "https://danielmwamba.com/profile.png",
     siteName: "Daniel MWAMBA Portfolio",
     images: [
       {
-        url: "https://danielmwamba.vercel.app/profile.png",
+        url: "https://danielmwamba.com/profile.png",
         width: 1200,
         height: 630,
         alt: "Daniel MWAMBA - Full Stack Developer",
@@ -59,7 +68,7 @@ export const metadata: Metadata = {
     description:
       "Portfolio of Daniel Mwamba, a passionate Full Stack Developer",
     creator: "@danielmwamba",
-    images: ["https://danielmwamba.vercel.app/profile.png"],
+    images: ["https://danielmwamba.com/profile.png"],
   },
   robots: {
     index: true,
@@ -79,7 +88,7 @@ export const metadata: Metadata = {
   },
   // The manifest is now handled by the manifest.ts file
   alternates: {
-    canonical: "https://danielmwamba.vercel.app",
+    canonical: "https://danielmwamba.com",
   },
   appleWebApp: {
     title: "Daniel MWAMBA",
@@ -108,8 +117,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Daniel MWAMBA",
-              url: "https://danielmwamba.vercel.app",
-              image: "https://danielmwamba.vercel.app/profile.png",
+              url: "https://danielmwamba.com",
+              image: "https://danielmwamba.com/profile.png",
               sameAs: [
                 "https://www.linkedin.com/in/danielmwamba",
                 "https://github.com/danielmwamba",

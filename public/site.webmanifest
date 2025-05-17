@@ -22,7 +22,18 @@
   ],
   "lang": "en-US",
   "orientation": "any",
-  "categories": ["portfolio", "web development", "technology", "Daniel Mwamba", "MWAMBA", "Mwamba", "Daniel portfolio", "kadea"],
+  "categories": [
+    "portfolio",
+    "web development",
+    "technology",
+    "Daniel Mwamba",
+    "MWAMBA",
+    "Mwamba",
+    "Daniel portfolio",
+    "kadea",
+    "Dan Mwamba",
+    "Dan Muamba"
+  ],
   "screenshots": [
     {
       "src": "/screenshot1.jpg",
@@ -36,4 +47,3 @@
     }
   ]
 }
-

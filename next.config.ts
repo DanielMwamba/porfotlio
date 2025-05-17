@@ -1,7 +1,11 @@
-import type { NextConfig } from "next"
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Configuration for image optimization
+  images: {
+    domains: ["localhost", "danielmwamba.com"],
+  },
   // Add security headers
   async headers() {
     return [
@@ -17,27 +21,26 @@ const nextConfig: NextConfig = {
             value: "DENY",
           },
           {
-            key: "Referrer-Policy",
-            value: "strict-origin-when-cross-origin",
+            key: "X-XSS-Protection",
+            value: "1; mode=block",
           },
         ],
+      },
+    ];
+  },
+  // Rewrite for sitemap and robots.txt
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/api/sitemap",
       },
       {
-        source: "/sw.js",
-        headers: [
-          {
-            key: "Content-Type",
-            value: "application/javascript; charset=utf-8",
-          },
-          {
-            key: "Cache-Control",
-            value: "no-cache, no-store, must-revalidate",
-          },
-        ],
+        source: "/robots.txt",
+        destination: "/api/robots",
       },
-    ]
+    ];
   },
-}
+};
 
-export default nextConfig
-
+export default nextConfig;
