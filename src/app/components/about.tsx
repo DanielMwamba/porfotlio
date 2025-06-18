@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { FaCode, FaUsers, FaGlobe } from "react-icons/fa";
+import { FaUsers, FaBrain, FaRocket } from "react-icons/fa";
+import { useI18n } from "@/locales/client";
 
 const About = () => {
+  const t = useI18n();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -12,20 +14,19 @@ const About = () => {
 
   const skills = [
     {
-      icon: FaCode,
-      title: "Problem Solving",
-      description:
-        "Transforming complex challenges into elegant, efficient solutions",
+      icon: FaBrain,
+      title: t("about.skill1.title"),
+      description: t("about.skill1.description"),
     },
     {
       icon: FaUsers,
-      title: "Collaboration",
-      description: "Thriving in team environments to achieve shared goals",
+      title: t("about.skill2.title"),
+      description: t("about.skill2.description"),
     },
     {
-      icon: FaGlobe,
-      title: "Adaptability",
-      description: "Quickly adapting to new technologies and methodologies",
+      icon: FaRocket,
+      title: t("about.skill3.title"),
+      description: t("about.skill3.description"),
     },
   ];
 
@@ -34,61 +35,77 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+      },
     },
   };
 
   return (
     <section
       id="about"
-      className="py-24 bg-gradient-to-b from-black to-gray-900"
+      className="section-container relative overflow-hidden"
       ref={ref}
     >
-      <div className="container mx-auto px-4">
-        <motion.h2
-          className="text-6xl font-bold mb-16 text-center font-poppins"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          About <span className="text-stroke">Me</span>
-        </motion.h2>
-        <div className="max-w-4xl mx-auto">
+      {/* Arrière-plan décoratif */}
+      <div className="absolute -right-64 top-1/3 w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-blue-500/10 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
+      <div
+        className="absolute -left-64 bottom-1/3 w-[35vw] h-[35vw] max-w-[450px] max-h-[450px] bg-purple-500/10 rounded-full filter blur-3xl opacity-30 animate-pulse"
+        style={{ animationDelay: "2s" }}
+      ></div>
+
+      <div className="content-container relative z-10">
+        <div className="section-title-container">
+          <motion.h2
+            className="font-bold font-montserrat text-3xl sm:text-4xl tracking-tight"
+            initial={{ opacity: 0, y: -20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            {t("about.title")}
+          </motion.h2>
           <motion.div
-            className="bg-black rounded-2xl p-8 shadow-2xl border border-gray-800"
+            className="h-1 w-20 sm:w-24 md:w-32 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-3 sm:mt-4 mb-4 sm:mb-6"
+            initial={{ scaleX: 0 }}
+            animate={inView ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          />
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <motion.div
+            className="glass rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-xl border border-white/10 backdrop-blur mb-10 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
+            whileHover={{ boxShadow: "0 0 30px rgba(139, 92, 246, 0.15)" }}
           >
-            <p className="text-xl mb-6 text-gray-300 leading-relaxed">
-              I am a passionate developer. I began my academic career in the
-              world of chemistry and biology. This background instilled in me a
-              sense of rigor and logic that I now apply to coding. My
-              fascination with programming was born from discovering the power
-              of digital tools during my studies. The ability to create
-              solutions from scratch using lines of code captivated me, leading
-              me to dive headfirst into web development. My transition to IT
-              management studies allowed me to remain immersed in the world of
-              programming. Later, at Kadea Academy, I honed my skills in web and
-              mobile development, deepening my expertise and fueling my passion
-              for creating innovative digital solutions. Today, I bring a unique
-              blend of scientific thinking and creative problem-solving to each
-              of my projects.
-            </p>
-            <p className="text-xl text-gray-300 leading-relaxed"></p>
+            <div className="space-y-4 sm:space-y-6">
+              <motion.p
+                className="text-base sm:text-lg text-gray-300 leading-relaxed font-inter"
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                {t("about.paragraph1")}
+              </motion.p>
+            </div>
           </motion.div>
 
           <motion.div
-            className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -96,16 +113,30 @@ const About = () => {
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 flex flex-col items-center text-center hover:bg-gray-700 transition-colors duration-300 transform hover:scale-105"
+                className="card p-4 sm:p-6 text-center group"
                 variants={itemVariants}
+                whileHover={{
+                  y: -8,
+                  transition: { duration: 0.3 },
+                  boxShadow: "0 10px 25px rgba(var(--primary), 0.2)",
+                }}
               >
-                <div className="bg-white rounded-full p-4 mb-4">
-                  <skill.icon size={32} className="text-black" />
-                </div>
-                <h3 className="text-2xl font-semibold mb-3 text-white font-poppins">
+                <motion.div
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-full p-4 sm:p-5 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mx-auto mb-4 sm:mb-6 text-white shadow-lg"
+                  whileHover={{
+                    scale: 1.1,
+                    rotate: 5,
+                    transition: { type: "spring", stiffness: 300, damping: 10 },
+                  }}
+                >
+                  <skill.icon size={24} className="sm:text-[28px]" />
+                </motion.div>
+                <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3 text-white font-montserrat tracking-tight group-hover:text-gradient transition-colors duration-300">
                   {skill.title}
                 </h3>
-                <p className="text-gray-400">{skill.description}</p>
+                <p className="text-sm sm:text-base text-gray-400 font-inter group-hover:text-gray-300 transition-colors duration-300">
+                  {skill.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
