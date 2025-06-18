@@ -101,24 +101,6 @@ const About = () => {
               >
                 {t("about.paragraph1")}
               </motion.p>
-
-              <motion.p
-                className="text-base sm:text-lg text-gray-300 leading-relaxed font-inter"
-                initial={{ opacity: 0 }}
-                animate={inView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                {t("about.paragraph2")}
-              </motion.p>
-
-              <motion.p
-                className="text-base sm:text-lg text-gray-300 leading-relaxed font-inter"
-                initial={{ opacity: 0 }}
-                animate={inView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                {t("about.paragraph3")}
-              </motion.p>
             </div>
           </motion.div>
 

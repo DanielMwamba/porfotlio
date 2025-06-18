@@ -128,8 +128,8 @@ const Projects = () => {
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  layout="fill"
-                  objectFit="cover"
+                  width={500}
+                  height={300}
                   className="transition-transform duration-500 hover:scale-110"
                 />
               </div>

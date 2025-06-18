@@ -6,29 +6,27 @@ export default {
   "nav.contact": "Contact",
 
   // Hero section
-  "hero.title": "Ingénieur Logiciel",
+  "hero.title": "Dévellopeur Full Stack",
   "hero.description":
-    "Je suis un développeur passionné par la technologie et la création de solutions digitales innovantes qui répondent aux besoins actuels. J'aime relever des défis et résoudre des problèmes avec ingéniosité.",
+    "Passionné par la technologie et la création de solutions digitales innovantes qui répondent aux besoins actuels. J'aime relever des défis et résoudre des problèmes avec ingéniosité.",
   "hero.contactButton": "Me contacter",
   "hero.cvButton": "Mon CV",
 
   // About section
   "about.title": "À propos de moi",
   "about.paragraph1":
-    "À l'origine, je rêvais de devenir médecin - j'ai même commencé des études en chimie-bio pour y arriver. Mais un jour, par curiosité, je suis tombé sur une question : \"Comment a-t-on créé Google ?\".",
-  "about.paragraph2":
-    "Cette simple interrogation a tout changé. En creusant, j'ai découvert l'envers du décor : le code, les sites web, l'HTML... et une passion est née. Plus j'apprenais, plus je voulais comprendre. Aujourd'hui, c'est clair : mon truc, c'est construire des choses avec des lignes de code.",
-  "about.paragraph3":
-    "Ce qui me reste de mon passé scientifique ? Un esprit d'analyse, une curiosité insatiable et cette envie de résoudre des problèmes... mais avec un clavier cette fois. C'est peut-être un détour inattendu, mais le code est devenu ma façon à moi de soigner des projets !",
+    "Moi, c’est Daniel. Développeur fullstack, je travaille sur des projets web et mobile. Ce qui me motive, c’est quand il y a un vrai défi à relever, un problème à résoudre ou une idée à transformer en produit concret. J’apprends encore tous les jours, et je suis toujours partant pour des missions freelance, des collaborations stimulantes, ou même rejoindre une équipe de devs ambitieuse.",
   "about.skill1.title": "Résolution de problèmes",
   "about.skill1.description":
-    "Transformer des défis complexes en solutions élégantes et efficaces",
+    "J'aime transformer des défis complexes en solutions simples, élégantes et efficaces.",
+
   "about.skill2.title": "Collaboration",
   "about.skill2.description":
-    "S'épanouir dans des environnements d'équipe pour atteindre des objectifs communs",
+    "Je m’épanouis en travaillant avec d’autres, en avançant ensemble vers des objectifs concrets.",
+
   "about.skill3.title": "Adaptabilité",
   "about.skill3.description":
-    "S'adapter rapidement aux nouvelles technologies et méthodologies",
+    "J’apprends vite et je m’adapte facilement aux nouvelles technologies ou façons de travailler.",
 
   // Skills section
   "skills.title": "Compétences clés",

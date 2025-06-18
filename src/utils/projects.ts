@@ -35,13 +35,13 @@ export const projects = [
     github: "https://github.com/DanielMwamba/duplex-24.4.stable",
     live: "https://duplex.streameex.com",
   },
-  {
-    id: "catfish",
-    title: "Catfish Land",
-    description:
-      "Site web pour le restaurant Catfish Land... Permet aux utilisateurs de contacter le restaurant pour passer leurs commandes et réserver des tables.",
-    image: "/catfish.png",
-    technologies: ["Wordpress", "Elementor"],
-    live: "https://dev-catfish-land.pantheonsite.io/",
-  },
+  // {
+  //   id: "catfish",
+  //   title: "Catfish Land",
+  //   description:
+  //     "Site web pour le restaurant Catfish Land... Permet aux utilisateurs de contacter le restaurant pour passer leurs commandes et réserver des tables.",
+  //   image: "/catfish.png",
+  //   technologies: ["Wordpress", "Elementor"],
+  //   live: "https://dev-catfish-land.pantheonsite.io/",
+  // },
 ];

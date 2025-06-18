@@ -6,29 +6,27 @@ export default {
   "nav.contact": "Contact",
 
   // Hero section
-  "hero.title": "Software Engineer",
+  "hero.title": "Full Stack Developer",
   "hero.description":
-    "I am a developer passionate about technology and creating innovative digital solutions that meet current needs. I enjoy taking on challenges and solving problems with ingenuity.",
+    "Passionate about technology and creating innovative digital solutions that meet current needs. I enjoy taking on challenges and solving problems with ingenuity.",
   "hero.contactButton": "Contact me",
   "hero.cvButton": "My Resume",
 
   // About section
   "about.title": "About me",
   "about.paragraph1":
-    'Originally, I dreamed of becoming a doctor - I even started chemistry-bio studies to get there. But one day, out of curiosity, I came across a question: "How was Google created?".',
-  "about.paragraph2":
-    "This simple inquiry changed everything. As I dug deeper, I discovered the world behind the scenes: code, websites, HTML... and a passion was born. The more I learned, the more I wanted to understand. Today, it's clear: my thing is building things with lines of code.",
-  "about.paragraph3":
-    "What remains from my scientific background? An analytical mind, an insatiable curiosity, and this desire to solve problems... but with a keyboard this time. It may be an unexpected detour, but code has become my way of healing projects!",
+    "I’m Daniel, a fullstack developer working on web and mobile projects. What drives me is tackling real challenges, solving problems, and turning ideas into solid products. I keep learning every day, and I’m always open to freelance work, exciting collaborations, or even joining a driven dev team.",
   "about.skill1.title": "Problem Solving",
   "about.skill1.description":
-    "Transforming complex challenges into elegant, efficient solutions",
+    "I enjoy turning complex challenges into simple, elegant, and efficient solutions.",
+
   "about.skill2.title": "Collaboration",
   "about.skill2.description":
-    "Thriving in team environments to achieve shared goals",
+    "I thrive in team environments, working together to achieve clear, shared goals.",
+
   "about.skill3.title": "Adaptability",
   "about.skill3.description":
-    "Quickly adapting to new technologies and methodologies",
+    "I learn quickly and adapt easily to new technologies and ways of working.",
 
   // Skills section
   "skills.title": "My skills",

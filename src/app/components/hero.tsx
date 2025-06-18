@@ -11,11 +11,11 @@ const Hero = () => {
   const t = useI18n();
 
   return (
-    <section className="section-container min-h-[95vh] flex items-center justify-center relative overflow-hidden">
+    <section className="section-container min-h-[90vh] flex items-center justify-center relative overflow-hidden top-14">
       {/* Effets d'arrière-plan améliorés */}
-      <div className="absolute inset-0 opacity-30">
+      {/* <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_70%)]"></div>
-      </div>
+      </div> */}
 
       {/* Cercles lumineux positionnés stratégiquement */}
       <div className="absolute top-[15%] -left-[10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-purple-500/20 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
@@ -161,8 +161,8 @@ const Hero = () => {
                 <Image
                   src="/profile.png"
                   alt="Daniel MWAMBA"
-                  layout="fill"
-                  objectFit="cover"
+                  width={600}
+                  height={300}
                   quality={90}
                   priority
                   className="z-0"
