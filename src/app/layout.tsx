@@ -1,5 +1,6 @@
 import type React from "react";
 import "./globals.css";
+import {Analytics} from "@vercel/analytics/next"
 import {
   Reenie_Beanie,
   Source_Code_Pro,
@@ -127,6 +128,7 @@ export default function RootLayout({
       lang="en"
       className={`scroll-smooth ${reenieBeanie.variable} ${sourceCodePro.variable} ${montserrat.variable} ${inter.variable}`}
     >
+      <Analytics />
       <head>
         <Script
           id="schema-org"
