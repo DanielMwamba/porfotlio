@@ -1,13 +1,13 @@
 import type React from "react";
 import "./globals.css";
-import {Analytics} from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 import {
   Reenie_Beanie,
   Source_Code_Pro,
   Montserrat,
   Inter,
 } from "next/font/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 
 const reenieBeanie = Reenie_Beanie({
@@ -40,23 +40,7 @@ export const metadata: Metadata = {
   title: "Daniel MWAMBA | Full Stack Developer",
   description:
     "Portfolio of Daniel Mwamba, a passionate Full Stack Developer specializing in React, Node.js, and modern web technologies.",
-  keywords: [
-    "Full Stack Developer",
-    "Software Engineer",
-    "Web Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "Daniel Mwamba",
-    "Daniel Mwamba Portfolio",
-    "Daniel Mwamba Full Stack Developer",
-    "Dan Mwamba",
-    "Dan Muamba",
-    "React",
-    "Node.js",
-    "JavaScript",
-    "TypeScript",
-    "Web Development",
-  ],
+  // Suppression des meta keywords (obsolètes pour le SEO moderne)
   authors: [{ name: "Daniel MWAMBA" }],
   creator: "Daniel MWAMBA",
   publisher: "Daniel MWAMBA",
@@ -68,8 +52,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Daniel MWAMBA | Full Stack Developer",
     description:
-      "Portfolio of Daniel Mwamba, a passionate Full Stack Developer",
-    url: "https://danielmwamba.com/profile.png",
+      "Portfolio of Daniel Mwamba, a passionate Full Stack Developer specializing in React, Node.js, and modern web technologies.",
+    url: "https://danielmwamba.com",
     siteName: "Daniel MWAMBA Portfolio",
     images: [
       {
@@ -86,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Daniel MWAMBA | Full Stack Developer",
     description:
-      "Portfolio of Daniel Mwamba, a passionate Full Stack Developer",
+      "Portfolio of Daniel Mwamba, a passionate Full Stack Developer specializing in React, Node.js, and modern web technologies.",
     creator: "@danielmwamba",
     images: ["https://danielmwamba.com/profile.png"],
   },
@@ -106,15 +90,26 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-icon.png",
   },
-  // The manifest is now handled by the manifest.ts file
   alternates: {
     canonical: "https://danielmwamba.com",
+    // Ajout des balises hreflang pour le multilingue
+    languages: {
+      en: "https://danielmwamba.com/en",
+      fr: "https://danielmwamba.com/fr",
+    },
   },
   appleWebApp: {
     title: "Daniel MWAMBA",
     statusBarStyle: "black-translucent",
     capable: true,
   },
+};
+
+// Fonction viewport séparée comme recommandé par Next.js 15
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
   themeColor: "#000000",
 };
 
@@ -130,6 +125,7 @@ export default function RootLayout({
     >
       <Analytics />
       <head>
+        {/* Structured Data enrichi */}
         <Script
           id="schema-org"
           type="application/ld+json"
@@ -146,6 +142,8 @@ export default function RootLayout({
                 "https://x.com/danielmwamba",
               ],
               jobTitle: "Full Stack Developer",
+              description:
+                "Passionate Full Stack Developer specializing in React, Node.js, and modern web technologies",
               worksFor: {
                 "@type": "Organization",
                 name: "Freelance",
@@ -160,9 +158,48 @@ export default function RootLayout({
                 "JavaScript",
                 "TypeScript",
                 "Web Development",
+                "Frontend Development",
+                "Backend Development",
+                "Full Stack Development",
+              ],
+              hasOccupation: {
+                "@type": "Occupation",
+                name: "Full Stack Developer",
+                occupationLocation: {
+                  "@type": "Country",
+                  name: "République Démocratique du Congo",
+                },
+              },
+              knowsLanguage: [
+                {
+                  "@type": "Language",
+                  name: "French",
+                  alternateName: "fr",
+                },
+                {
+                  "@type": "Language",
+                  name: "English",
+                  alternateName: "en",
+                },
               ],
             }),
           }}
+        />
+        {/* Balises hreflang pour le multilingue */}
+        <link
+          rel="alternate"
+          hrefLang="en"
+          href="https://danielmwamba.com/en"
+        />
+        <link
+          rel="alternate"
+          hrefLang="fr"
+          href="https://danielmwamba.com/fr"
+        />
+        <link
+          rel="alternate"
+          hrefLang="x-default"
+          href="https://danielmwamba.com/en"
         />
         <link rel="apple-touch-icon" href="/profile.png" />
       </head>
