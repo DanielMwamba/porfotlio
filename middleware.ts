@@ -11,5 +11,8 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)"],
+  matcher: [
+    // Exclure les fichiers statiques, API routes, et assets
+    "/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt|sw.js|grid.svg|manifest.webmanifest|apple-icon.png|icon0.svg|icon1.png).*)",
+  ],
 };

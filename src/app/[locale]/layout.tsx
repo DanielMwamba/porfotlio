@@ -16,9 +16,9 @@ export const viewport: Viewport = {
 export async function generateMetadata({
   params,
 }: {
-  params: any;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const locale = params.locale;
+  const { locale } = await params;
 
   const translations = {
     en: {
@@ -76,14 +76,13 @@ export async function generateMetadata({
   };
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
   children: ReactNode;
-  params: any;
+  params: Promise<{ locale: string }>;
 }) {
-  return (
-    <I18nProviderClient locale={params.locale}>{children}</I18nProviderClient>
-  );
+  const { locale } = await params;
+  return <I18nProviderClient locale={locale}>{children}</I18nProviderClient>;
 }
