@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 
 const reenieBeanie = Reenie_Beanie({
   weight: ["400"],
@@ -205,6 +206,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         {children}
+        <GoogleAnalytics />
         <Script id="register-sw" strategy="afterInteractive">
           {`
             if ('serviceWorker' in navigator) {

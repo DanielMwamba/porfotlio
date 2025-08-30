@@ -12,6 +12,7 @@ import { useInView } from "react-intersection-observer";
 import { projects } from "@/utils/projects";
 import { useI18n } from "@/locales/client";
 import { gsap } from "gsap";
+import { trackProjectView, trackOutboundLink } from "./GoogleAnalytics";
 
 const Projects = () => {
   const t = useI18n();
@@ -115,6 +116,8 @@ const Projects = () => {
         .set(contentRef.current, { x: direction * 50 })
         .call(() => {
           setCurrentIndex(newIndex);
+          // Suivre la vue du projet avec Google Analytics
+          trackProjectView(projects[newIndex].title);
         })
         // Animation d'entrée
         .to(imageRef.current, {
@@ -319,6 +322,12 @@ const Projects = () => {
                     href={currentProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      trackOutboundLink(
+                        currentProject.github!,
+                        `GitHub - ${currentProject.title}`
+                      )
+                    }
                     className="group flex items-center gap-2 px-6 py-3 bg-purple-600/20 hover:bg-purple-600/30 backdrop-blur-sm rounded-full border border-purple-600/50 transition-all duration-300 font-inter"
                   >
                     <FaGithub className="w-5 h-5 group-hover:rotate-12 transition-transform" />
@@ -330,6 +339,12 @@ const Projects = () => {
                     href={currentProject.live}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      trackOutboundLink(
+                        currentProject.live!,
+                        `Demo - ${currentProject.title}`
+                      )
+                    }
                     className="group flex items-center gap-2 px-6 py-3 bg-blue-600/20 hover:bg-blue-600/30 backdrop-blur-sm rounded-full border border-blue-600/50 transition-all duration-300 font-inter"
                   >
                     <FaExternalLinkAlt className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

@@ -5,6 +5,7 @@ import { FaEnvelope, FaFileDownload } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import { reseaux } from "@/utils/reseaux";
 import { useI18n } from "@/locales/client";
+import { trackDownload, trackOutboundLink } from "./GoogleAnalytics";
 
 const Contact = () => {
   const t = useI18n();
@@ -108,6 +109,9 @@ const Contact = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      trackOutboundLink(link.href, `Social - ${link.label}`)
+                    }
                     className="text-white hover:text-gradient transition-all p-3"
                     whileHover={{
                       scale: 1.2,
@@ -140,6 +144,7 @@ const Contact = () => {
             <motion.a
               href="/CV-DANIEL-MWAMBA.pdf"
               download
+              onClick={() => trackDownload("CV-DANIEL-MWAMBA.pdf")}
               className="glass text-white font-medium py-3 px-6 rounded-full inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 border border-white/20 font-montserrat"
               whileHover={{
                 scale: 1.05,
