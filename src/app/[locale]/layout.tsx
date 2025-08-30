@@ -53,7 +53,8 @@ export async function generateMetadata({
           url: "https://danielmwamba.com/profile.png",
           width: 1200,
           height: 630,
-          alt: `${t.title}`,
+          alt: t.title,
+          type: "image/png",
         },
       ],
       locale: t.locale,
@@ -61,10 +62,14 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
+      site: "@danielmwamba",
       title: t.title,
       description: t.description,
       creator: "@danielmwamba",
-      images: ["https://danielmwamba.com/profile.png"],
+      images: {
+        url: "https://danielmwamba.com/profile.png",
+        alt: t.title,
+      },
     },
     alternates: {
       canonical: `https://danielmwamba.com/${locale}`,

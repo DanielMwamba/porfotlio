@@ -10,6 +10,7 @@ import {
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import GoogleAnalytics from "./components/GoogleAnalytics";
+import SocialMetaTags from "./components/SocialMetaTags";
 
 const reenieBeanie = Reenie_Beanie({
   weight: ["400"],
@@ -62,6 +63,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Daniel MWAMBA - Full Stack Developer",
+        type: "image/png",
       },
     ],
     locale: "en_US",
@@ -69,11 +71,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@danielmwamba",
     title: "Daniel MWAMBA | Full Stack Developer",
     description:
       "Portfolio of Daniel Mwamba, a passionate Full Stack Developer specializing in React, Node.js, and modern web technologies.",
     creator: "@danielmwamba",
-    images: ["https://danielmwamba.com/profile.png"],
+    images: {
+      url: "https://danielmwamba.com/profile.png",
+      alt: "Daniel MWAMBA - Full Stack Developer",
+    },
   },
   robots: {
     index: true,
@@ -126,6 +132,7 @@ export default function RootLayout({
     >
       <Analytics />
       <head>
+        <SocialMetaTags />
         {/* Structured Data enrichi */}
         <Script
           id="schema-org"
