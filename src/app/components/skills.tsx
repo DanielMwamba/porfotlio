@@ -11,9 +11,9 @@ import {
   SiPostgresql,
   SiNextdotjs,
   SiExpress,
-  SiAsana,
   SiJavascript,
-  SiGit,
+  SiFirebase,
+  SiStrapi
 } from "react-icons/si";
 import { useI18n } from "@/locales/client";
 
@@ -34,58 +34,11 @@ const Skills = () => {
     { name: "Express.js", icon: SiExpress },
     { name: "MongoDB", icon: SiMongodb },
     { name: "PostgreSQL", icon: SiPostgresql },
-    { name: "Git", icon: SiGit },
-    { name: "Figma", icon: FaFigma },
+    { name: "Firebase", icon: SiFirebase },
+    { name: "Strapi", icon: SiStrapi },
     { name: "WordPress", icon: FaWordpress },
-    { name: "Asana", icon: SiAsana },
   ];
 
-  // Container variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  // Item variants
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 70,
-        damping: 15,
-      },
-    },
-  };
-
-  // Tech icon variants
-  const techIconVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-      },
-    },
-    hover: {
-      y: -7,
-      scale: 1.1,
-      filter: "drop-shadow(0 0 8px rgba(var(--primary), 0.7))",
-      transition: { type: "spring", stiffness: 300, damping: 10 },
-    },
-  };
-
-  // Fonction pour obtenir les titres et descriptions des compétences
   const getSkillContent = (skillId: string) => {
     switch (skillId) {
       case "fullstack":
@@ -112,129 +65,66 @@ const Skills = () => {
   };
 
   return (
-    <section
-      id="skills"
-      className="section-container relative overflow-hidden"
-      ref={ref}
-    >
-      {/* Arrière-plan décoratif */}
-      <div className="absolute -left-[15%] top-1/3 w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] bg-blue-500/10 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
-      <div
-        className="absolute -right-[15%] bottom-1/3 w-[40vw] h-[40vw] max-w-[550px] max-h-[550px] bg-purple-500/10 rounded-full filter blur-3xl opacity-30 animate-pulse"
-        style={{ animationDelay: "2s" }}
-      ></div>
-
-      <div className="content-container relative z-10">
-        <div className="section-title-container">
-          <motion.h2
-            className="font-bold font-montserrat text-4xl tracking-tight"
-            initial={{ opacity: 0, y: -20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
+    <section id="skills" className="section-container bg-gray-50" ref={ref}>
+      <div className="content-container">
+        <div className="mb-16 text-center">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
             {t("skills.title")}
-          </motion.h2>
-          <motion.div
-            className="h-1 w-24 md:w-32 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-4 mb-6"
-            initial={{ scaleX: 0 }}
-            animate={inView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
+          </h2>
+          <div className="h-1 w-20 bg-black mx-auto"></div>
         </div>
 
-        {/* Section compétences principales */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-20"
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-        >
-          {skills.map((skill) => {
+        {/* Main Skills */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          {skills.map((skill, index) => {
             const content = getSkillContent(skill.id);
             return (
               <motion.div
                 key={skill.id}
-                className="card"
-                variants={itemVariants}
-                whileHover={{
-                  y: -8,
-                  transition: { duration: 0.3 },
-                  boxShadow: "0 10px 25px rgba(var(--primary), 0.2)",
-                }}
+                className="bg-white p-8 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: index * 0.1 }}
               >
-                <div className="card-content flex flex-col h-full">
-                  <div className="flex items-start mb-4">
-                    <motion.div
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-full mr-4 text-white shadow-lg flex-shrink-0"
-                      whileHover={{
-                        scale: 1.1,
-                        rotate: 5,
-                        transition: {
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 10,
-                        },
-                      }}
-                    >
-                      <skill.icon className="w-6 h-6" />
-                    </motion.div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold font-montserrat tracking-tight group-hover:text-gradient transition-colors duration-300">
-                        {content.title}
-                      </h3>
-                      <p className="text-gray-400 mt-2 font-inter group-hover:text-gray-300 transition-colors duration-300">
-                        {content.description}
-                      </p>
-                    </div>
-                  </div>
+                <div className="w-12 h-12 bg-gray-900 text-white rounded-lg flex items-center justify-center mb-6">
+                  <skill.icon className="w-6 h-6" />
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {content.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {content.description}
+                </p>
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* Section technologies */}
-        <motion.div
-          className="mt-10"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <h3 className="text-2xl font-semibold font-montserrat tracking-tight mb-3">
-              {t("skills.subtitle")}
-            </h3>
-            <div className="h-1 w-32 bg-gradient-to-r from-purple-500/70 to-blue-500/70 mx-auto mt-2 mb-4"></div>
-          </motion.div>
+        {/* Technologies Grid */}
+        <div className="text-center">
+          <h3 className="text-2xl font-bold text-gray-900 mb-12">
+            {t("skills.subtitle")}
+          </h3>
 
-          <motion.div
-            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-x-4 gap-y-10 justify-items-center max-w-5xl mx-auto"
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-          >
-            {recentTechnologies.map((tech) => (
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+            {recentTechnologies.map((tech, index) => (
               <motion.div
                 key={tech.name}
-                className="flex flex-col items-center w-20"
-                variants={techIconVariants}
-                whileHover="hover"
+                className="flex flex-col items-center gap-3 group"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.2 + index * 0.05 }}
               >
-                <div className="glass p-4 rounded-full mb-3 w-16 h-16 flex items-center justify-center">
-                  <tech.icon className="w-7 h-7 text-white transition-colors duration-300" />
+                <div className="w-16 h-16 bg-white rounded-2xl border border-gray-100 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
+                  <tech.icon className="w-8 h-8 text-gray-700 group-hover:text-black transition-colors" />
                 </div>
-                <span className="text-center text-sm text-gray-400 font-inter group-hover:text-gray-300">
+                <span className="text-sm font-medium text-gray-500 group-hover:text-gray-900 transition-colors">
                   {tech.name}
                 </span>
               </motion.div>
             ))}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
