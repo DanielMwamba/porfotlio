@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { skills } from "@/utils/skills";
 import { useInView } from "react-intersection-observer";
-import { FaReact, FaNodeJs, FaFigma, FaWordpress } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaWordpress } from "react-icons/fa";
 import {
   SiTypescript,
   SiTailwindcss,

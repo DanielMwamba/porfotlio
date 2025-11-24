@@ -25,7 +25,7 @@ const Projects = () => {
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const [ref, inView] = useInView({
+  const [ref] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
@@ -50,7 +50,6 @@ const Projects = () => {
       if (isAnimating || newIndex === currentIndex) return;
 
       setIsAnimating(true);
-      const direction = newIndex > currentIndex ? 1 : -1;
 
       const tl = gsap.timeline({
         onComplete: () => {
