@@ -30,116 +30,51 @@ const About = () => {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 15,
-      },
-    },
-  };
-
   return (
-    <section
-      id="about"
-      className="section-container relative overflow-hidden"
-      ref={ref}
-    >
-      {/* Arrière-plan décoratif */}
-      <div className="absolute -right-64 top-1/3 w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-blue-500/10 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
-      <div
-        className="absolute -left-64 bottom-1/3 w-[35vw] h-[35vw] max-w-[450px] max-h-[450px] bg-purple-500/10 rounded-full filter blur-3xl opacity-30 animate-pulse"
-        style={{ animationDelay: "2s" }}
-      ></div>
-
-      <div className="content-container relative z-10">
-        <div className="section-title-container">
-          <motion.h2
-            className="font-bold font-montserrat text-3xl sm:text-4xl tracking-tight"
-            initial={{ opacity: 0, y: -20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            {t("about.title")}
-          </motion.h2>
-          <motion.div
-            className="h-1 w-20 sm:w-24 md:w-32 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-3 sm:mt-4 mb-4 sm:mb-6"
-            initial={{ scaleX: 0 }}
-            animate={inView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            className="glass rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-xl border border-white/10 backdrop-blur mb-10 sm:mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            whileHover={{ boxShadow: "0 0 30px rgba(139, 92, 246, 0.15)" }}
-          >
-            <div className="space-y-4 sm:space-y-6">
-              <motion.p
-                className="text-base sm:text-lg text-gray-300 leading-relaxed font-inter"
-                initial={{ opacity: 0 }}
-                animate={inView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
+    <section id="about" className="section-container bg-white" ref={ref}>
+      <div className="content-container">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+          {/* Title & Intro */}
+          <div className="lg:w-1/3">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                {t("about.title")}
+              </h2>
+              <div className="h-1 w-20 bg-black mb-8"></div>
+              <p className="text-xl text-gray-500 leading-relaxed font-light">
                 {t("about.paragraph1")}
-              </motion.p>
-            </div>
-          </motion.div>
+              </p>
+            </motion.div>
+          </div>
 
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-          >
-            {skills.map((skill, index) => (
-              <motion.div
-                key={index}
-                className="card p-4 sm:p-6 text-center group"
-                variants={itemVariants}
-                whileHover={{
-                  y: -8,
-                  transition: { duration: 0.3 },
-                  boxShadow: "0 10px 25px rgba(var(--primary), 0.2)",
-                }}
-              >
+          {/* Attributes Grid */}
+          <div className="lg:w-2/3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {skills.map((skill, index) => (
                 <motion.div
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-full p-4 sm:p-5 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mx-auto mb-4 sm:mb-6 text-white shadow-lg"
-                  whileHover={{
-                    scale: 1.1,
-                    rotate: 5,
-                    transition: { type: "spring", stiffness: 300, damping: 10 },
-                  }}
+                  key={index}
+                  className="group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.2 + index * 0.1 }}
                 >
-                  <skill.icon size={24} className="sm:text-[28px]" />
+                  <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-black transition-colors duration-300">
+                    <skill.icon className="w-5 h-5 text-gray-900 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">
+                    {skill.title}
+                  </h3>
+                  <p className="text-gray-500 leading-relaxed text-sm">
+                    {skill.description}
+                  </p>
                 </motion.div>
-                <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3 text-white font-montserrat tracking-tight group-hover:text-gradient transition-colors duration-300">
-                  {skill.title}
-                </h3>
-                <p className="text-sm sm:text-base text-gray-400 font-inter group-hover:text-gray-300 transition-colors duration-300">
-                  {skill.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

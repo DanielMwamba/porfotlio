@@ -1,40 +1,15 @@
 import type React from "react";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
-import {
-  Reenie_Beanie,
-  Source_Code_Pro,
-  Montserrat,
-  Inter,
-} from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import SocialMetaTags from "./components/SocialMetaTags";
 
-const reenieBeanie = Reenie_Beanie({
-  weight: ["400"],
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-reenie-beanie",
-});
-
-const sourceCodePro = Source_Code_Pro({
-  weight: ["400", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-source-code-pro",
-});
-
-const montserrat = Montserrat({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
-
-const inter = Inter({
-  weight: ["400", "500", "600"],
-  subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -42,7 +17,6 @@ export const metadata: Metadata = {
   title: "Daniel MWAMBA | Full Stack Developer",
   description:
     "Portfolio of Daniel Mwamba, a passionate Full Stack Developer specializing in React, Node.js, and modern web technologies.",
-  // Suppression des meta keywords (obsolètes pour le SEO moderne)
   authors: [{ name: "Daniel MWAMBA" }],
   creator: "Daniel MWAMBA",
   publisher: "Daniel MWAMBA",
@@ -99,7 +73,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://danielmwamba.com",
-    // Ajout des balises hreflang pour le multilingue
     languages: {
       en: "https://danielmwamba.com/en",
       fr: "https://danielmwamba.com/fr",
@@ -112,12 +85,11 @@ export const metadata: Metadata = {
   },
 };
 
-// Fonction viewport séparée comme recommandé par Next.js 15
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#000000",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -126,14 +98,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`scroll-smooth ${reenieBeanie.variable} ${sourceCodePro.variable} ${montserrat.variable} ${inter.variable}`}
-    >
+    <html lang="en" className={`scroll-smooth ${plusJakartaSans.variable}`}>
       <Analytics />
       <head>
         <SocialMetaTags />
-        {/* Structured Data enrichi */}
         <Script
           id="schema-org"
           type="application/ld+json"
@@ -193,7 +161,6 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* Balises hreflang pour le multilingue */}
         <link
           rel="alternate"
           hrefLang="en"
@@ -211,7 +178,7 @@ export default function RootLayout({
         />
         <link rel="apple-touch-icon" href="/profile.png" />
       </head>
-      <body className="font-sans">
+      <body className="font-sans bg-white text-black antialiased selection:bg-black selection:text-white">
         {children}
         <GoogleAnalytics />
         <Script id="register-sw" strategy="afterInteractive">

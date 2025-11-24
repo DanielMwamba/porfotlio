@@ -14,149 +14,87 @@ const Contact = () => {
     threshold: 0.1,
   });
 
-  // Item variants for staggered animations
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 70,
-        damping: 15,
-      },
-    },
-  };
-
   return (
-    <section id="contact" className="py-24 relative overflow-hidden" ref={ref}>
-      {/* Arrière-plan décoratif */}
-      <div className="absolute -right-64 top-1/4 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
-      <div
-        className="absolute -left-64 bottom-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl opacity-30 animate-pulse"
-        style={{ animationDelay: "2s" }}
-      ></div>
-
-      <div className="container mx-auto px-4 max-w-4xl relative z-10">
-        <motion.div
-          className="mb-16 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-6xl font-bold font-montserrat tracking-tight">
-            {" "}
-            {t("contact.title")}{" "}
-          </h2>
+    <section id="contact" className="section-container bg-gray-50" ref={ref}>
+      <div className="content-container">
+        <div className="max-w-3xl mx-auto text-center">
           <motion.div
-            className="h-1 w-32 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto my-6"
-            initial={{ scaleX: 0 }}
-            animate={inView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
-        </motion.div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="flex flex-col items-center"
-        >
-          <motion.p
-            variants={itemVariants}
-            className="text-xl text-gray-300 text-center mb-12 max-w-2xl font-inter leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
           >
-            {t("contact.description")}
-          </motion.p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              {t("contact.title")}
+            </h2>
+            <div className="h-1 w-20 bg-black mx-auto mb-8"></div>
+            <p className="text-xl text-gray-500 mb-12 leading-relaxed">
+              {t("contact.description")}
+            </p>
+          </motion.div>
 
           <motion.div
-            variants={itemVariants}
-            className="glass rounded-2xl p-10 shadow-xl border border-white/10 backdrop-blur mb-12 w-full max-w-2xl"
-            whileHover={{ boxShadow: "0 0 30px rgba(139, 92, 246, 0.15)" }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 mb-16"
           >
-            <div className="flex flex-col items-center space-y-8">
-              <motion.a
+            <div className="flex flex-col items-center gap-8">
+              <a
                 href="mailto:danielmwambacinyamu@gmail.com"
-                className="glass bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium py-4 px-8 rounded-full inline-flex items-center justify-center text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 group font-montserrat"
-                whileHover={{
-                  scale: 1.05,
-                  transition: { type: "spring", stiffness: 400, damping: 10 },
-                }}
-                whileTap={{ scale: 0.95 }}
+                className="btn-primary text-lg flex gap-3 px-8 py-4 w-full sm:w-auto justify-center"
               >
-                <FaEnvelope className="mr-3" size={20} />
+                <FaEnvelope size={20} />
                 {t("contact.emailButton")}
-              </motion.a>
+              </a>
 
-              <p className="text-gray-300 mt-4 font-inter">
-                {t("contact.followMe")}
-              </p>
+              <div className="w-full h-px bg-gray-100"></div>
 
-              <div className="flex space-x-8 mt-4">
-                {reseaux.map((link) => (
-                  <motion.a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() =>
-                      trackOutboundLink(link.href, `Social - ${link.label}`)
-                    }
-                    className="text-white hover:text-gradient transition-all p-3"
-                    whileHover={{
-                      scale: 1.2,
-                      rotate: 5,
-                      transition: {
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 10,
-                      },
-                    }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <link.icon size={32} />
-                    <span className="sr-only">{link.label}</span>
-                  </motion.a>
-                ))}
+              <div>
+                <p className="text-gray-500 mb-6 font-medium">
+                  {t("contact.followMe")}
+                </p>
+                <div className="flex justify-center gap-6">
+                  {reseaux.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        trackOutboundLink(link.href, `Social - ${link.label}`)
+                      }
+                      className="text-gray-400 hover:text-black transition-colors transform hover:scale-110 duration-200"
+                      aria-label={link.label}
+                    >
+                      <link.icon size={28} />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="text-center max-w-2xl">
-            <h3 className="text-2xl font-semibold mb-6 font-montserrat tracking-tight">
-              {" "}
-              {t("contact.lookingFor")}{" "}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.4 }}
+          >
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              {t("contact.lookingFor")}
             </h3>
-            <p className="text-gray-300 mb-8 font-inter">
-              {" "}
-              {t("contact.available")}{" "}
-            </p>
-            <motion.a
+            <p className="text-gray-500 mb-8">{t("contact.available")}</p>
+
+            <a
               href="/CV-DANIEL-MWAMBA.pdf"
               download
               onClick={() => trackDownload("CV-DANIEL-MWAMBA.pdf")}
-              className="glass text-white font-medium py-3 px-6 rounded-full inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 border border-white/20 font-montserrat"
-              whileHover={{
-                scale: 1.05,
-                transition: { type: "spring", stiffness: 400, damping: 10 },
-              }}
-              whileTap={{ scale: 0.95 }}
+              className="btn-outline inline-flex items-center gap-2"
             >
-              <FaFileDownload className="mr-2" size={18} />
+              <FaFileDownload size={18} />
               {t("contact.downloadCV")}
-            </motion.a>
+            </a>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

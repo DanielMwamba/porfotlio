@@ -4,7 +4,16 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Configuration for image optimization
   images: {
-    domains: ["localhost", "danielmwamba.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "github.com",
+      },
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+      },
+    ],
   },
   // Add security headers
   async headers() {
