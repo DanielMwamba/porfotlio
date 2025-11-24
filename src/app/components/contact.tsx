@@ -41,7 +41,7 @@ const Contact = () => {
             <div className="flex flex-col items-center gap-8">
               <a
                 href="mailto:danielmwambacinyamu@gmail.com"
-                className="btn-primary text-lg px-8 py-4 w-full sm:w-auto justify-center"
+                className="btn-primary text-lg flex gap-3 px-8 py-4 w-full sm:w-auto justify-center"
               >
                 <FaEnvelope size={20} />
                 {t("contact.emailButton")}
