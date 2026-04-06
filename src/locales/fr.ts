@@ -70,6 +70,11 @@ export default {
     "Je suis actuellement disponible pour du travail freelance et des postes à temps plein. Si vous pensez que je serais un bon choix pour votre équipe ou votre projet, n'hésitez pas à me contacter!",
   "contact.downloadCV": "Télécharger mon CV",
 
+  // 404 page
+  "notFound.title": "Page introuvable",
+  "notFound.description": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
+  "notFound.backHome": "Retour à l'accueil",
+
   // Footer
   "footer.designed": "Conçu et développé par",
   "footer.rights": "Tous droits réservés",
