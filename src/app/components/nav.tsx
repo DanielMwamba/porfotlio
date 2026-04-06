@@ -39,120 +39,121 @@ const Header = () => {
   ];
 
   return (
-    <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/90 backdrop-blur-md border-b border-gray-100 py-4"
-          : "bg-transparent py-6"
-      }`}
-    >
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        <Link
-          href="/"
-          className="text-2xl font-bold tracking-tighter text-black z-50"
-        >
-          DM.
-        </Link>
+    <>
+      <header
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/90 backdrop-blur-md border-b border-gray-100 py-4"
+            : "bg-transparent py-6"
+        }`}
+      >
+        <div className="container mx-auto px-6 flex justify-between items-center">
+          <Link
+            href="/"
+            className="text-2xl font-bold tracking-tighter text-black z-50"
+          >
+            DM.
+          </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
-
-          <div className="h-4 w-px bg-gray-300 mx-2"></div>
-
-          <div className="flex gap-3 text-sm font-medium">
-            <button
-              onClick={() => changeLocale("en")}
-              className={`${
-                locale === "en"
-                  ? "text-black"
-                  : "text-gray-400 hover:text-gray-600"
-              }`}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => changeLocale("fr")}
-              className={`${
-                locale === "fr"
-                  ? "text-black"
-                  : "text-gray-400 hover:text-gray-600"
-              }`}
-            >
-              FR
-            </button>
-          </div>
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden z-50 p-2 -mr-2 text-black focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-
-      </div>
-    </header>
-
-    {/* Mobile Nav Overlay — outside header so z-index works correctly */}
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-white z-[60] flex flex-col justify-center items-center md:hidden"
-        >
-          <nav className="flex flex-col items-center gap-8 mb-12">
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-3xl font-bold text-black tracking-tight"
-                onClick={() => setIsOpen(false)}
+                className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
               >
                 {item.label}
               </Link>
             ))}
+
+            <div className="h-4 w-px bg-gray-300 mx-2"></div>
+
+            <div className="flex gap-3 text-sm font-medium">
+              <button
+                onClick={() => changeLocale("en")}
+                className={`${
+                  locale === "en"
+                    ? "text-black"
+                    : "text-gray-400 hover:text-gray-600"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => changeLocale("fr")}
+                className={`${
+                  locale === "fr"
+                    ? "text-black"
+                    : "text-gray-400 hover:text-gray-600"
+                }`}
+              >
+                FR
+              </button>
+            </div>
           </nav>
 
-          <div className="flex gap-6 text-lg font-medium">
-            <button
-              onClick={() => {
-                changeLocale("en");
-                setIsOpen(false);
-              }}
-              className={`${
-                locale === "en" ? "text-black" : "text-gray-400"
-              }`}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => {
-                changeLocale("fr");
-                setIsOpen(false);
-              }}
-              className={`${
-                locale === "fr" ? "text-black" : "text-gray-400"
-              }`}
-            >
-              FR
-            </button>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden z-50 p-2 -mr-2 text-black focus:outline-none"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Nav Overlay — outside header, inside the fragment returned by the component */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-white z-[60] flex flex-col justify-center items-center md:hidden"
+          >
+            <nav className="flex flex-col items-center gap-8 mb-12">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-3xl font-bold text-black tracking-tight"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="flex gap-6 text-lg font-medium">
+              <button
+                onClick={() => {
+                  changeLocale("en");
+                  setIsOpen(false);
+                }}
+                className={`${
+                  locale === "en" ? "text-black" : "text-gray-400"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => {
+                  changeLocale("fr");
+                  setIsOpen(false);
+                }}
+                className={`${
+                  locale === "fr" ? "text-black" : "text-gray-400"
+                }`}
+              >
+                FR
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
