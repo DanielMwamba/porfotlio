@@ -101,57 +101,58 @@ const Header = () => {
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* Mobile Nav Overlay */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-white z-40 flex flex-col justify-center items-center md:hidden"
-            >
-              <nav className="flex flex-col items-center gap-8 mb-12">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="text-3xl font-bold text-black tracking-tight"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
-
-              <div className="flex gap-6 text-lg font-medium">
-                <button
-                  onClick={() => {
-                    changeLocale("en");
-                    setIsOpen(false);
-                  }}
-                  className={`${
-                    locale === "en" ? "text-black" : "text-gray-400"
-                  }`}
-                >
-                  EN
-                </button>
-                <button
-                  onClick={() => {
-                    changeLocale("fr");
-                    setIsOpen(false);
-                  }}
-                  className={`${
-                    locale === "fr" ? "text-black" : "text-gray-400"
-                  }`}
-                >
-                  FR
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </header>
+
+    {/* Mobile Nav Overlay — outside header so z-index works correctly */}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-white z-[60] flex flex-col justify-center items-center md:hidden"
+        >
+          <nav className="flex flex-col items-center gap-8 mb-12">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-3xl font-bold text-black tracking-tight"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex gap-6 text-lg font-medium">
+            <button
+              onClick={() => {
+                changeLocale("en");
+                setIsOpen(false);
+              }}
+              className={`${
+                locale === "en" ? "text-black" : "text-gray-400"
+              }`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => {
+                changeLocale("fr");
+                setIsOpen(false);
+              }}
+              className={`${
+                locale === "fr" ? "text-black" : "text-gray-400"
+              }`}
+            >
+              FR
+            </button>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
