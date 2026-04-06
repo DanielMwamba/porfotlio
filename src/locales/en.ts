@@ -69,6 +69,11 @@ export default {
     "I am currently available for freelance work and full-time positions. If you think I would be a good fit for your team or project, don't hesitate to contact me!",
   "contact.downloadCV": "Download my CV",
 
+  // 404 page
+  "notFound.title": "Page not found",
+  "notFound.description": "Sorry, the page you're looking for doesn't exist or has been moved.",
+  "notFound.backHome": "Back to home",
+
   // Footer
   "footer.designed": "Designed and developed by",
   "footer.rights": "All rights reserved",
